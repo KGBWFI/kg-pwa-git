@@ -9,7 +9,7 @@ self.addEventListener("install", (e) => {
       return cache.addAll([
         "./",
         "./index.html",
-        "/.styles.css",
+        "./styles.css",
         "./manifest.json",
         "./script.js",
         "./musikstueckequelle.csv",
