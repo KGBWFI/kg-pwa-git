@@ -425,7 +425,7 @@ function nachLinks() {
   }
 }
 
-if ("serviceworker" in navigator) {
+if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker
       .register("service-worker.js")
@@ -438,5 +438,14 @@ if ("serviceworker" in navigator) {
       .catch((error) => {
         console.log("Service Worker Registrierung fehlgeschlagen:", error);
       });
+  });
+}
+if (navigator.storage && navigator.storage.persist) {
+  navigator.storage.persisted().then((persistent) => {
+    if (persistent) {
+      console.log("Storage will not be cleared except by explicit user action");
+    } else {
+      console.log("Storage may be cleared by the UA under storage pressure.");
+    }
   });
 }
