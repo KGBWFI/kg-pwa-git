@@ -1,0 +1,11 @@
+{
+    "name": "Simple PWA",
+    "short_name": "PWA",
+    "theme_color": "#222831",
+    "background_color": "#ffad17",
+    "display": "standalone",
+    "Scope": "/kg-pwa-git/",
+    "start_url": "/kg-pwa-git/index.html",
+    "icons": [
+    ]
+}

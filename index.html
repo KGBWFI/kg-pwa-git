@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="manifest" href="./manifest.json" />
+    <title>KG Blau-Weiß Fischenich</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <img src="Ritter_Kuno.jpeg" id="ritterKuno" class="ritterKuno" title="KG Blau-Weiß Fischenich">
+    <div id="containerEingabe" class="containerEingabe">
+        <input id="inputText" class="inputText" placeholder="Eingabe" inputmode="numeric"></input>
+        <div id="hinweisText" class="hinweisText"></div>
+      <!--  <div id="autoCheck" class="autoCheck">AUTOMATIK IST EIN</div> -->
+    </div>
+    <div id="containerGesamt" class="containerGesamt">
+        <div id="containerOben" class="containerOben">
+            <div id="containerTitel" class="containerTitel">
+                <div id="outputTitel" class="outputTitel">Titel</div>
+            </div>
+            <div id=containerTonart class=containerTonart>
+                <div id="outputTonart" class="outputTonart">Tonart</div>
+            </div>
+        </div>
+        <div id="containerUnten" class="containerUnten">
+            <div id="outputText" class="outputText">KG Blau-Weiß Fischenisch</div>
+        </div>
+        <div id="containerButtons" class="containerButtons">
+            <button id="buttonLinks" class="buttonLinks"></buttton>
+            <button id="buttonSpace" class="buttonSpace"></button>
+            <button id="buttonRechts" class="buttonRechts"></button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        musikSammlungErstellen();
+        // autoCheck.style.backgroundColor = "lightgreen";
+        inputText.value = "KUNO";
+        hinweisText.textContent = "T - 1xTusch | TTT - 3xTusch | P - schmucke Prinz | B - op de Maat | J - oh, wie bist | H - Happy Birthday | K - Kuno";
+        containerTitel.style.backgroundColor = "white";
+        containerTonart.style.backgroundColor = "white";
+        containerUnten.style.backgroundColor = "white";
+        outputTitel.style.backgroundColor = "white";
+        outputTonart.style.backgroundColor = "white";
+        containerGesamt.hidden = true;
+        containerButtons.hidden = true;
+        buttonRechts.hidden = true;
+        buttonLinks.hidden = true;
+        displayText();
+    </script>
+</body>
+
+</html>
