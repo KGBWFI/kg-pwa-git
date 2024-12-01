@@ -129,15 +129,11 @@ function endInput(e) {
       ritterKuno.hidden = false;
     }
     //      check ob eine evtl. eingegebene Zahl zu einer Nummer eines MS passt - dann darf sie nicht in der folgenden Suchfunktion verwendet werden
-    msFilterNummer = musikSammlung.filter((m) => {
-      return String(m.nummer) === String(inputText.value);
-    });
+    msFilterNummer = musikSammlung.filter((m) => String(m.nummer) === String(inputText.value));
 
     msFilterTitel = musikSammlung;
     if (msFilterNummer.length === 0) {
-      msFilterTitel = musikSammlung.filter((m) => {
-        return m.titel.toUpperCase().indexOf(inputText.value) !== -1; // Suchfunktion
-      });
+      msFilterTitel = musikSammlung.filter((m) => m.titel.toUpperCase().includes(inputText.value));
       buttonSpace.textContent = "..." + inputText.value + "...";
       buttonSpace.style.display = "flex";
       for (m of msFilterTitel) {
@@ -440,6 +436,7 @@ if ("serviceWorker" in navigator) {
       });
   });
 }
+
 if (navigator.storage && navigator.storage.persist) {
   navigator.storage.persisted().then((persistent) => {
     if (persistent) {
@@ -449,6 +446,6 @@ if (navigator.storage && navigator.storage.persist) {
     }
   });
 }
-// Ende Gelände
-// brainwusel test
+
+// Ende
 
