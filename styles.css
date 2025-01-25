@@ -102,14 +102,28 @@ body, html {
     color: black;
 }
 
-.hinweisText {
+/* .hinweisText {
     height: 10%;
     padding: 0.7em;
     font-size: 120%;
     font-weight: bold;
     justify-content: center;
     text-align: center;
+} */
+
+.containerFavoriten {
+    height: 20%;
+    display: flex;
+    flex-direction:row;
+    justify-content:space-between;
+    justify-items: center;
+    align-items: center;
+    background-color: orange;
+    font-size: 2em;
 }
+
+
+
 
 /*.autoCheck {
     height: 10%;

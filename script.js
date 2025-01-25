@@ -1,6 +1,6 @@
 const containerEingabe = document.getElementById("containerEingabe");
 const inputText = document.getElementById("inputText");
-const hinweisText = document.getElementById("hinweisText");
+// const hinweisText = document.getElementById("hinweisText");
 const containerGesamt = document.getElementById("containerGesamt");
 const containerOben = document.getElementById("containerOben");
 const containerTitel = document.getElementById("containerTitel");
@@ -13,7 +13,13 @@ const buttonLinks = document.getElementById("buttonLinks");
 const buttonRechts = document.getElementById("buttonRechts");
 const buttonSpace = document.getElementById("buttonSpace");
 const ritterKuno = document.getElementById("ritterKuno");
-//const autoCheck = document.getElementById("autoCheck");//
+const buttonEinfachTusch = document.getElementById("EinfachTusch");
+const buttonDreifachTusch = document.getElementById("DreifachTusch");
+const buttonPrinz = document.getElementById("Prinz");
+const buttonBauer = document.getElementById("Bauer");
+const buttonJungfrau = document.getElementById("Jungfrau");
+const buttonProsit = document.getElementById("Prosit");
+const buttonHappyBirthday = document.getElementById("HappyBirthday");
 
 function MusikStueck(id, nummer, titel, tonart, mappe) {
   this.id = id;
@@ -95,6 +101,51 @@ async function musikSammlungErstellen() {
   musikSammlung = _musikSammlung;
   msFilterTitel = _musikSammlung;
 }
+
+
+buttonEinfachTusch.addEventListener("touchend",displayEinfachTusch);
+buttonEinfachTusch.addEventListener("mousedown",displayEinfachTusch);
+function displayEinfachTusch(){
+  inputText.value = "1 X TUSCH";
+  displayText();
+}
+buttonDreifachTusch.addEventListener("touchend",displayDreifachTusch);
+buttonDreifachTusch.addEventListener("mousedown",displayDreifachTusch);
+function displayDreifachTusch(){
+  inputText.value = "3 X TUSCH";
+  displayText();
+}
+buttonPrinz.addEventListener("touchend",displayPrinz);
+buttonPrinz.addEventListener("mousedown",displayPrinz);
+function displayPrinz(){
+  inputText.value = "3";
+  displayText();
+}
+buttonBauer.addEventListener("touchend",displayBauer);
+buttonBauer.addEventListener("mousedown",displayBauer);
+function displayBauer(){
+  inputText.value = "68";
+  displayText();
+}
+buttonJungfrau.addEventListener("touchend",displayJungfrau);
+buttonJungfrau.addEventListener("mousedown",displayJungfrau);
+function displayJungfrau(){
+  inputText.value = "33";
+  displayText();
+}
+buttonProsit.addEventListener("touchend",displayProsit);
+buttonProsit.addEventListener("mousedown",displayProsit);
+function displayProsit(){
+  inputText.value = "PROSIT";
+  displayText();
+}
+buttonHappyBirthday.addEventListener("touchend",displayHappyBirthday);
+buttonHappyBirthday.addEventListener("mousedown",displayHappyBirthday);
+function displayHappyBirthday(){
+  inputText.value = "Happy Birthday";
+  displayText();
+}
+
 
 function endInput(e) {
   inputText.value = String(inputText.value).toUpperCase();
@@ -180,7 +231,7 @@ function displayText() {
   outputTonart.hidden = false;
 
   containerEingabe.hidden = true;
-  hinweisText.hidden = true;
+  // hinweisText.hidden = true;
   //autoCheck.hidden = true;
   inputText.hidden = true;
 
@@ -291,7 +342,7 @@ function startInput() {
   outputTonart.hidden = true;
 
   containerEingabe.hidden = false;
-  hinweisText.hidden = false;
+  // hinweisText.hidden = false;
   // autoCheck.hidden = false;
 
   inputText.hidden = false;
