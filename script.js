@@ -20,6 +20,7 @@ const buttonBauer = document.getElementById("Bauer");
 const buttonJungfrau = document.getElementById("Jungfrau");
 const buttonProsit = document.getElementById("Prosit");
 const buttonHappyBirthday = document.getElementById("HappyBirthday");
+const autoCheck = document.getElementById("AutomatikButton");
 
 function MusikStueck(id, nummer, titel, tonart, mappe) {
   this.id = id;
@@ -54,26 +55,27 @@ outputTitel.addEventListener("mousedown", startInput);
 ritterKuno.addEventListener("onclick", startInput);
 ritterKuno.addEventListener("mousedown", startInput);
 
-/*
+
 autoCheck.addEventListener("onclick", automatikEinaus);
 autoCheck.addEventListener("mousedown", automatikEinaus);
 
 function automatikEinaus (e) {
     if (autoCheck.style.backgroundColor === "red"){
-        autoCheck.style.backgroundColor = "lightgreen";
-        autoCheck.textContent="   AUTOMATIK IST AN   ";
-        autoCheck.style.fontWeight = "bold";
+        autoCheck.style.backgroundColor = "green";
+        autoCheck.textContent="AUTOMATIK IST AN";
+        autoCheck.style.fontWeight = "normal";
         musikSammlung = msGeladen;
         inputText.focus();
     } else {
         autoCheck.style.backgroundColor = "red";
-        autoCheck.textContent="   AUTOMATIK IST AUS   ";
+        autoCheck.textContent="FREITEXT OHNE AUTOMATIK";
         autoCheck.style.fontWeight = "normal";
         musikSammlung = [];
         inputText.focus();
+        inputText.inputMode = "text";
     }
 };
-*/
+
 
 async function getText(file) {
   let myText = "";
