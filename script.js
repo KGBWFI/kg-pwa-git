@@ -1,6 +1,5 @@
 const containerEingabe = document.getElementById("containerEingabe");
 const inputText = document.getElementById("inputText");
-// const hinweisText = document.getElementById("hinweisText");
 const containerGesamt = document.getElementById("containerGesamt");
 const containerOben = document.getElementById("containerOben");
 const containerTitel = document.getElementById("containerTitel");
@@ -46,15 +45,11 @@ buttonRechts.addEventListener("mousedown", nachRechts);
 outputText.addEventListener("touchend", startInput);
 outputText.addEventListener("mousedown", startInput);
 
-//containerUnten.addEventListener("touchend",startInput);
-//containerUnten.addEventListener("mousedown", startInput);
-
 outputTitel.addEventListener("touchend", startInput);
 outputTitel.addEventListener("mousedown", startInput);
 
 ritterKuno.addEventListener("onclick", startInput);
 ritterKuno.addEventListener("mousedown", startInput);
-
 
 autoCheck.addEventListener("onclick", automatikEinaus);
 autoCheck.addEventListener("mousedown", automatikEinaus);
@@ -75,7 +70,6 @@ function automatikEinaus (e) {
         inputText.inputMode = "text";
     }
 };
-
 
 async function getText(file) {
   let myText = "";
@@ -103,7 +97,6 @@ async function musikSammlungErstellen() {
   musikSammlung = _musikSammlung;
   msFilterTitel = _musikSammlung;
 }
-
 
 buttonEinfachTusch.addEventListener("touchend",displayEinfachTusch);
 buttonEinfachTusch.addEventListener("mousedown",displayEinfachTusch);
@@ -147,7 +140,6 @@ function displayHappyBirthday(){
   inputText.value = "Happy Birthday";
   displayText();
 }
-
 
 function endInput(e) {
   inputText.value = String(inputText.value).toUpperCase();
