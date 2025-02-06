@@ -88,8 +88,6 @@ body, html {
 }
 
 .containerEingabe {
-  /*  display: flex;
-    flex-direction: column;*/
     height: 100%;
 }
 
@@ -118,21 +116,7 @@ body, html {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    /* justify-items: center;
-    align-items: center; */
-    
 }
-
-/* .AutomatikLabel {
-    background-color: white;
-    outline-color: red;
-    width: 20%;
-    height: 100%;
-    font-size: 1.7em;
-    text-align: center;
-    align-items: center;
-    align-content: center;
-} */
 
 .AutomatikButton {
     color: white;
@@ -142,11 +126,3 @@ body, html {
     font-size: 3em;
     text-align: center;
 }
-/* .FavoritButton {
-    background-color: orange;
-} */
-
-/* .space {
-    background: white;
-} */
-
