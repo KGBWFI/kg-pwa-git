@@ -68,6 +68,7 @@ function automatikEinaus (e) {
         musikSammlung = [];
         inputText.focus();
         inputText.inputMode = "text";
+        inputText.focus();
     }
 };
 
