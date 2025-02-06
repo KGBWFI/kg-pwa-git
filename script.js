@@ -60,14 +60,14 @@ function automatikEinaus (e) {
         autoCheck.textContent="Automatik ist an";
         autoCheck.style.fontWeight = "normal";
         musikSammlung = msGeladen;
-        startInput();
+        // startInput();
         // inputText.focus();
     } else {
         autoCheck.style.backgroundColor = "red";
         autoCheck.textContent="Freitext ohne Automatik";
         autoCheck.style.fontWeight = "normal";
         musikSammlung = [];
-        startInput()
+        // startInput()
         // inputText.focus();
         // inputText.inputMode = "text";
         // inputText.focus();
