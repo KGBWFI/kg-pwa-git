@@ -60,15 +60,17 @@ function automatikEinaus (e) {
         autoCheck.textContent="Automatik ist an";
         autoCheck.style.fontWeight = "normal";
         musikSammlung = msGeladen;
-        inputText.focus();
+        startInput();
+        // inputText.focus();
     } else {
         autoCheck.style.backgroundColor = "red";
         autoCheck.textContent="Freitext ohne Automatik";
         autoCheck.style.fontWeight = "normal";
         musikSammlung = [];
-        inputText.focus();
-        inputText.inputMode = "text";
-        inputText.focus();
+        startInput()
+        // inputText.focus();
+        // inputText.inputMode = "text";
+        // inputText.focus();
     }
 };
 
@@ -357,7 +359,12 @@ function startInput() {
 
   inputText.value = "";
   inputText.focus();
-  inputText.inputMode = "numeric";
+  
+  if (autoCheck.style.backgroundColor === "green"){
+    inputText.inputMode = "numeric";
+  } else {
+    inputText.inputMode = "text";
+  }
 
   containerOben.style.backgroundColor = "white";
   containerTitel.style.backgroundColor = "white";
