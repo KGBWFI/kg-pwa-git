@@ -57,13 +57,13 @@ autoCheck.addEventListener("mousedown", automatikEinaus);
 function automatikEinaus (e) {
     if (autoCheck.style.backgroundColor === "red"){
         autoCheck.style.backgroundColor = "green";
-        autoCheck.textContent="AUTOMATIK IST AN";
+        autoCheck.textContent="Automatik ist an";
         autoCheck.style.fontWeight = "normal";
         musikSammlung = msGeladen;
         inputText.focus();
     } else {
         autoCheck.style.backgroundColor = "red";
-        autoCheck.textContent="FREITEXT OHNE AUTOMATIK";
+        autoCheck.textContent="Freitext ohne Automatik";
         autoCheck.style.fontWeight = "normal";
         musikSammlung = [];
         inputText.focus();
