@@ -80,7 +80,7 @@ autoCheck.addEventListener("mousedown", automatikEinaus);
 function updateInput(e) {
   console.log(e);
   const t = e.srcElement.textContent
-  if (t === "ZEIGEN") {
+  if (t === "Z E I G E N") {
     endInput();
   } else if (t === "CLEAR" && t != "") {
     const str = String(inputText.value);

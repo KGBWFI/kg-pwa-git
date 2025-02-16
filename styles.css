@@ -136,8 +136,9 @@ body, html {
 .tastatur {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     height:100%;
+    width:auto;
     background-color: white;
 }
 
@@ -145,7 +146,7 @@ body, html {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 100%;
+    width: 70%;
     height: 100%;
 }
 
@@ -164,7 +165,7 @@ body, html {
     font-weight: 900;
     background-color: ;
     color: darkslategray;
-    width: 5.5rem;
+    width: 2.5em;
     height: 5.5rem;
     text-align: center;
     background-color: lightgray;
@@ -190,21 +191,21 @@ body, html {
 
 .leerzeile {
     background-color: white;
-    height: 4.7rem;
+    height: 3.3rem;
 }
 
 .return {
     background-color:dodgerblue;
     width:100%;
     font-weight: 900;
-    font-size: 9rem;
+    font-size: 8rem;
     color:lightgray;
 }
 
 .tastaturZahlen {
     display: flex;
     flex-direction: column;
-    width: 30%;
+    width: 27%;
     height: 100%;
 }
 
@@ -216,7 +217,7 @@ body, html {
     align-items: center;
 }
 .zahl {
-    font-size: 8em;
+    font-size: 7em;
     width: 8em;
     font-weight:900;
     color: darkslategray;
