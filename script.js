@@ -20,6 +20,7 @@ const buttonJungfrau = document.getElementById("Jungfrau");
 const buttonProsit = document.getElementById("Prosit");
 const buttonHappyBirthday = document.getElementById("HappyBirthday");
 const autoCheck = document.getElementById("AutomatikButton");
+const buttonABC = document.getElementsByClassName("ABC");
 
 function MusikStueck(id, nummer, titel, tonart, mappe) {
   this.id = id;
@@ -35,6 +36,11 @@ let msFilterTitel = [MusikStueck];
 let msGeladen = [MusikStueck];
 
 inputText.addEventListener("keydown", endInput);
+
+for (b of buttonABC){
+  b.addEventListener("onclick", updateInput);
+  b.addEventListener("mousedown", updateInput);
+}
 
 buttonLinks.addEventListener("onclick", nachLinks);
 buttonLinks.addEventListener("mousedown", nachLinks);
@@ -53,6 +59,11 @@ ritterKuno.addEventListener("mousedown", startInput);
 
 autoCheck.addEventListener("onclick", automatikEinaus);
 autoCheck.addEventListener("mousedown", automatikEinaus);
+
+function updateInput (e) {
+  console.log(e);
+  inputText.value = inputText.value + e.srcElement.textContent;
+}
 
 function automatikEinaus (e) {
     if (autoCheck.style.backgroundColor === "red"){

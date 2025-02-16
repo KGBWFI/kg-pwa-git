@@ -194,7 +194,7 @@ body, html {
 .tastaturZahlen {
     display: flex;
     flex-direction: column;
-    width: 28%;
+    width: 32%;
     height: 100%;
 }
 
@@ -205,7 +205,7 @@ body, html {
     justify-items: center;
     align-items: center;
 }
-.zahl,.null,.plus,.minus {
+.zahl {
     font-size: 8em;
     width: 8em;
     font-weight:900;
