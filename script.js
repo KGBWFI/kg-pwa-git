@@ -20,7 +20,13 @@ const buttonJungfrau = document.getElementById("Jungfrau");
 const buttonProsit = document.getElementById("Prosit");
 const buttonHappyBirthday = document.getElementById("HappyBirthday");
 const autoCheck = document.getElementById("AutomatikButton");
+const tastatur = document.getElementById("tastatur");
 const buttonABC = document.getElementsByClassName("ABC");
+const buttonZahl = document.getElementsByClassName("zahl");
+const buttonLeer = document.getElementById("space");
+const buttonZurück = document.getElementById("back");
+const buttonReturn = document.getElementById("return");
+
 
 function MusikStueck(id, nummer, titel, tonart, mappe) {
   this.id = id;
@@ -41,6 +47,16 @@ for (b of buttonABC){
   b.addEventListener("onclick", updateInput);
   b.addEventListener("mousedown", updateInput);
 }
+for (b of buttonZahl){
+  b.addEventListener("onclick", updateInput);
+  b.addEventListener("mousedown", updateInput);
+}
+buttonLeer.addEventListener("onclick", updateInput);
+buttonLeer.addEventListener("mousedown", updateInput);
+buttonZurück.addEventListener("onclick", updateInput);
+buttonZurück.addEventListener("mousedown", updateInput);
+buttonReturn.addEventListener("onclick", updateInput);
+buttonReturn.addEventListener("mousedown", updateInput);
 
 buttonLinks.addEventListener("onclick", nachLinks);
 buttonLinks.addEventListener("mousedown", nachLinks);
@@ -62,7 +78,18 @@ autoCheck.addEventListener("mousedown", automatikEinaus);
 
 function updateInput (e) {
   console.log(e);
-  inputText.value = inputText.value + e.srcElement.textContent;
+  const t = e.srcElement.textContent
+  if ( t === "ZEIGEN") {
+    endInput();
+  } else if (t === "LEER") {
+    inputText.value += " ";
+  } else if (t === "CLEAR" && t != ""){
+    const str = String(inputText.value);
+    const strShorter = str.slice(0,str.length-1);
+    inputText.value = strShorter;
+  } else {
+    inputText.value = inputText.value + t;
+  }
 }
 
 function automatikEinaus (e) {
@@ -156,11 +183,12 @@ function displayHappyBirthday(){
 }
 
 function endInput(e) {
+  tastaturHide();
   inputText.value = String(inputText.value).toUpperCase();
-  if (e.code === "Space") {
-    inputText.inputMode = "text";
-  }
-  if (e.code === "Enter") {
+  // if (e.code === "Space") {
+  //   inputText.inputMode = "text";
+  // }
+  // if (e.code === "Enter") {
     inputText.value = String(inputText.value).trim();
     if (inputText.value === "") {
       inputText.value = "KUNO";
@@ -216,7 +244,6 @@ function endInput(e) {
     inputText.hidden = true;
     displayText();
   }
-}
 
 function displayText() {
   if (inputText.value === "KUNO") {
@@ -227,6 +254,8 @@ function displayText() {
     buttonRechts.hidden = true;
     buttonSpace.hidden = true;
   }
+
+  tastaturHide();
 
   containerGesamt.hidden = false;
   containerOben.hidden = false;
@@ -339,6 +368,7 @@ function displayText() {
 }
 
 function startInput() {
+  tastaturShow();
   ritterKuno.hidden = true;
   containerGesamt.hidden = true;
   containerOben.hidden = true;
@@ -354,7 +384,7 @@ function startInput() {
   // autoCheck.hidden = false;
 
   inputText.hidden = false;
-  inputText.hidden = false;
+  tastatur.hidden = false;
 
   buttonLinks.style.backgroundColor = "white";
   buttonRechts.style.backgroundColor = "white";
@@ -483,6 +513,32 @@ function nachLinks() {
     buttonSpace.textContent = " ";
     buttonSpace.style.display = "none";
   }
+}
+
+function tastaturHide() {
+  // alert("Hide");
+  for (b of buttonABC){
+    b.hidden = true;
+  }
+  for (b of buttonZahl){
+    b.hidden = true;
+  }
+  buttonLeer.hidden = true;
+  buttonZurück.hidden = true;
+  buttonReturn.hidden = true;
+}
+
+function tastaturShow() {
+  // alert("Schow");
+  for (b of buttonABC){
+    b.hidden = false;
+  }
+  for (b of buttonZahl){
+    b.hidden = false;
+  }
+  buttonLeer.hidden = false;
+  buttonZurück.hidden = false;
+  buttonReturn.hidden = false;
 }
 
 if ("serviceWorker" in navigator) {
