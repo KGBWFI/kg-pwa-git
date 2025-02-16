@@ -82,8 +82,6 @@ function updateInput(e) {
   const t = e.srcElement.textContent
   if (t === "ZEIGEN") {
     endInput();
-  } else if (t === "LEER") {
-    inputText.value += " ";
   } else if (t === "CLEAR" && t != "") {
     const str = String(inputText.value);
     const strShorter = str.slice(0, str.length - 1);

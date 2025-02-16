@@ -138,6 +138,7 @@ body, html {
     flex-direction: row;
     justify-content: space-between;
     height:100%;
+    background-color: white;
 }
 
 .tastaturABC {
@@ -175,7 +176,7 @@ body, html {
     font-weight: 900;
     color: darkslategray;
     width: 100%;
-    background-color:beige;
+    background-color:goldenrod;
 }
 
 .back {
@@ -187,18 +188,23 @@ body, html {
     background-color: lightgray;
 }
 
-.return{
-    background-color: red;
+.leerzeile {
+    background-color: white;
+    height: 4.7rem;
+}
+
+.return {
+    background-color:dodgerblue;
     width:100%;
     font-weight: 900;
-    font-size: 13rem;
+    font-size: 9rem;
     color:lightgray;
 }
 
 .tastaturZahlen {
     display: flex;
     flex-direction: column;
-    width: 32%;
+    width: 30%;
     height: 100%;
 }
 
@@ -217,6 +223,10 @@ body, html {
     background-color: lightgray;
     text-align: center;
 }
+
+/* .outputText {
+    text-align: center;
+} */
 
 /* .null {   
     font-size: 8em;
