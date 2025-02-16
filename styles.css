@@ -118,6 +118,7 @@ body, html {
     /* justify-content: space-between; */
     justify-items: center;
     /* align-items: center; */
+    text-align: center;
 }
 
 .AutomatikButton {
@@ -125,7 +126,7 @@ body, html {
     background-color: green;
     width: 100%;
     height: 100%;
-    font-size: 2.9em;
+    font-size: 2em;
     text-align: center;
     /* justify-items: center;
     justify-content: center;
@@ -169,18 +170,21 @@ body, html {
 }
 
 .space {
-    font-size: 4rem;
+    font-size: 2rem;
+    height: 5.5rem;
     font-weight: 900;
-    color: gray;
+    color: darkslategray;
     width: 100%;
     background-color:beige;
 }
 
 .back {
-    font-size: 4rem;
+    font-size: 2rem;
+    height: 5.5rem;
+    width: 22%;
     font-weight: 900;
-    color:red;
-    background-color: beige;
+    color:darkslategray;
+    background-color: lightgray;
 }
 
 .return{
@@ -209,8 +213,9 @@ body, html {
     font-size: 8em;
     width: 8em;
     font-weight:900;
-    color: darkblue;
+    color: darkslategray;
     background-color: lightgray;
+    text-align: center;
 }
 
 /* .null {   

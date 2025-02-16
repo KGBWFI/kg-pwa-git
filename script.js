@@ -98,17 +98,11 @@ function automatikEinaus (e) {
         autoCheck.textContent="Automatik ist an";
         autoCheck.style.fontWeight = "normal";
         musikSammlung = msGeladen;
-        // startInput();
-        // inputText.focus();
     } else {
         autoCheck.style.backgroundColor = "red";
         autoCheck.textContent="Freitext ohne Automatik";
         autoCheck.style.fontWeight = "normal";
         musikSammlung = [];
-        // startInput()
-        // inputText.focus();
-        // inputText.inputMode = "text";
-        // inputText.focus();
     }
 };
 
@@ -378,13 +372,8 @@ function startInput() {
   outputText.hidden = true;
   outputTitel.hidden = true;
   outputTonart.hidden = true;
-
   containerEingabe.hidden = false;
-  // hinweisText.hidden = false;
-  // autoCheck.hidden = false;
-
   inputText.hidden = false;
-  tastatur.hidden = false;
 
   buttonLinks.style.backgroundColor = "white";
   buttonRechts.style.backgroundColor = "white";
@@ -396,10 +385,8 @@ function startInput() {
   buttonSpace.textContent = " ";
   buttonSpace.style.display = "none";
 
-  containerEingabe.hidden = false;
-
   inputText.value = "";
-  inputText.focus();
+  // inputText.focus();
   
   if (autoCheck.style.backgroundColor === "green"){
     inputText.inputMode = "numeric";
@@ -516,7 +503,6 @@ function nachLinks() {
 }
 
 function tastaturHide() {
-  // alert("Hide");
   for (b of buttonABC){
     b.hidden = true;
   }
@@ -529,7 +515,6 @@ function tastaturHide() {
 }
 
 function tastaturShow() {
-  // alert("Schow");
   for (b of buttonABC){
     b.hidden = false;
   }
