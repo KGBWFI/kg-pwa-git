@@ -43,14 +43,15 @@ let msGeladen = [MusikStueck];
 
 inputText.addEventListener("keydown", endInput);
 
-for (b of buttonABC){
+for (b of buttonABC) {
   b.addEventListener("onclick", updateInput);
   b.addEventListener("mousedown", updateInput);
 }
-for (b of buttonZahl){
+for (b of buttonZahl) {
   b.addEventListener("onclick", updateInput);
   b.addEventListener("mousedown", updateInput);
 }
+
 buttonLeer.addEventListener("onclick", updateInput);
 buttonLeer.addEventListener("mousedown", updateInput);
 buttonZurück.addEventListener("onclick", updateInput);
@@ -76,34 +77,34 @@ ritterKuno.addEventListener("mousedown", startInput);
 autoCheck.addEventListener("onclick", automatikEinaus);
 autoCheck.addEventListener("mousedown", automatikEinaus);
 
-function updateInput (e) {
+function updateInput(e) {
   console.log(e);
   const t = e.srcElement.textContent
-  if ( t === "ZEIGEN") {
+  if (t === "ZEIGEN") {
     endInput();
   } else if (t === "LEER") {
     inputText.value += " ";
-  } else if (t === "CLEAR" && t != ""){
+  } else if (t === "CLEAR" && t != "") {
     const str = String(inputText.value);
-    const strShorter = str.slice(0,str.length-1);
+    const strShorter = str.slice(0, str.length - 1);
     inputText.value = strShorter;
   } else {
     inputText.value = inputText.value + t;
   }
 }
 
-function automatikEinaus (e) {
-    if (autoCheck.style.backgroundColor === "red"){
-        autoCheck.style.backgroundColor = "green";
-        autoCheck.textContent="Automatik ist an";
-        autoCheck.style.fontWeight = "normal";
-        musikSammlung = msGeladen;
-    } else {
-        autoCheck.style.backgroundColor = "red";
-        autoCheck.textContent="Freitext ohne Automatik";
-        autoCheck.style.fontWeight = "normal";
-        musikSammlung = [];
-    }
+function automatikEinaus(e) {
+  if (autoCheck.style.backgroundColor === "red") {
+    autoCheck.style.backgroundColor = "green";
+    autoCheck.textContent = "Automatik ist an";
+    autoCheck.style.fontWeight = "normal";
+    musikSammlung = msGeladen;
+  } else {
+    autoCheck.style.backgroundColor = "red";
+    autoCheck.textContent = "Freitext ohne Automatik";
+    autoCheck.style.fontWeight = "normal";
+    musikSammlung = [];
+  }
 };
 
 async function getText(file) {
@@ -133,45 +134,45 @@ async function musikSammlungErstellen() {
   msFilterTitel = _musikSammlung;
 }
 
-buttonEinfachTusch.addEventListener("touchend",displayEinfachTusch);
-buttonEinfachTusch.addEventListener("mousedown",displayEinfachTusch);
-function displayEinfachTusch(){
+buttonEinfachTusch.addEventListener("touchend", displayEinfachTusch);
+buttonEinfachTusch.addEventListener("mousedown", displayEinfachTusch);
+function displayEinfachTusch() {
   inputText.value = "1 X TUSCH";
   displayText();
 }
-buttonDreifachTusch.addEventListener("touchend",displayDreifachTusch);
-buttonDreifachTusch.addEventListener("mousedown",displayDreifachTusch);
-function displayDreifachTusch(){
+buttonDreifachTusch.addEventListener("touchend", displayDreifachTusch);
+buttonDreifachTusch.addEventListener("mousedown", displayDreifachTusch);
+function displayDreifachTusch() {
   inputText.value = "3 X TUSCH";
   displayText();
 }
-buttonPrinz.addEventListener("touchend",displayPrinz);
-buttonPrinz.addEventListener("mousedown",displayPrinz);
-function displayPrinz(){
+buttonPrinz.addEventListener("touchend", displayPrinz);
+buttonPrinz.addEventListener("mousedown", displayPrinz);
+function displayPrinz() {
   inputText.value = "3";
   displayText();
 }
-buttonBauer.addEventListener("touchend",displayBauer);
-buttonBauer.addEventListener("mousedown",displayBauer);
-function displayBauer(){
+buttonBauer.addEventListener("touchend", displayBauer);
+buttonBauer.addEventListener("mousedown", displayBauer);
+function displayBauer() {
   inputText.value = "68";
   displayText();
 }
-buttonJungfrau.addEventListener("touchend",displayJungfrau);
-buttonJungfrau.addEventListener("mousedown",displayJungfrau);
-function displayJungfrau(){
+buttonJungfrau.addEventListener("touchend", displayJungfrau);
+buttonJungfrau.addEventListener("mousedown", displayJungfrau);
+function displayJungfrau() {
   inputText.value = "33";
   displayText();
 }
-buttonProsit.addEventListener("touchend",displayProsit);
-buttonProsit.addEventListener("mousedown",displayProsit);
-function displayProsit(){
+buttonProsit.addEventListener("touchend", displayProsit);
+buttonProsit.addEventListener("mousedown", displayProsit);
+function displayProsit() {
   inputText.value = "PROSIT";
   displayText();
 }
-buttonHappyBirthday.addEventListener("touchend",displayHappyBirthday);
-buttonHappyBirthday.addEventListener("mousedown",displayHappyBirthday);
-function displayHappyBirthday(){
+buttonHappyBirthday.addEventListener("touchend", displayHappyBirthday);
+buttonHappyBirthday.addEventListener("mousedown", displayHappyBirthday);
+function displayHappyBirthday() {
   inputText.value = "Happy Birthday";
   displayText();
 }
@@ -179,65 +180,61 @@ function displayHappyBirthday(){
 function endInput(e) {
   tastaturHide();
   inputText.value = String(inputText.value).toUpperCase();
-  // if (e.code === "Space") {
-  //   inputText.inputMode = "text";
-  // }
-  // if (e.code === "Enter") {
-    inputText.value = String(inputText.value).trim();
-    if (inputText.value === "") {
-      inputText.value = "KUNO";
-    }
-    if (inputText.value === "T") {
-      inputText.value = "1 x TUSCH";
-    }
-    if (String(inputText.value).startsWith("TT")) {
-      inputText.value = "3 x TUSCH";
-    }
-    if (inputText.value === "H") {
-      inputText.value = "Happy Birthday";
-    }
-    if (inputText.value === "P") {
-      inputText.value = "3";
-    }
-    if (inputText.value === "B") {
-      inputText.value = "68";
-    }
-    if (inputText.value === "J") {
-      inputText.value = "33";
-    }
-    if (inputText.value === "K") {
-      inputText.value = "KUNO";
-      ritterKuno.hidden = false;
-    }
-    //      check ob eine evtl. eingegebene Zahl zu einer Nummer eines MS passt - dann darf sie nicht in der folgenden Suchfunktion verwendet werden
-    msFilterNummer = musikSammlung.filter((m) => String(m.nummer) === String(inputText.value));
-
-    msFilterTitel = musikSammlung;
-    if (msFilterNummer.length === 0) {
-      msFilterTitel = musikSammlung.filter((m) => m.titel.toUpperCase().includes(inputText.value));
-      buttonSpace.textContent = "..." + inputText.value + "...";
-      buttonSpace.style.display = "flex";
-      for (m of msFilterTitel) {
-        inputText.value = m.nummer;
-        if (m.nummer === "Anhang") {
-          inputText.value = m.titel.toUpperCase();
-        }
-        if (m.nummer === "KG Blau-Weiß Fischenich") {
-          inputText.value = "";
-        }
-        break;
-      }
-    }
-    if (msFilterTitel.length > 1 && msFilterTitel !== musikSammlung) {
-      buttonRechts.style.backgroundColor = "green";
-      buttonLinks.style.backgroundColor = "red";
-    } else if (msFilterTitel.length !== 1) {
-      buttonSpace.textContent = " ";
-      buttonSpace.style.display = "none";
-    }
-    inputText.hidden = true;
-    displayText();
+  inputText.value = String(inputText.value).trim();
+  if (inputText.value === "") {
+    inputText.value = "KUNO";
   }
+  if (inputText.value === "T") {
+    inputText.value = "1 x TUSCH";
+  }
+  if (String(inputText.value).startsWith("TT")) {
+    inputText.value = "3 x TUSCH";
+  }
+  if (inputText.value === "H") {
+    inputText.value = "Happy Birthday";
+  }
+  if (inputText.value === "P") {
+    inputText.value = "3";
+  }
+  if (inputText.value === "B") {
+    inputText.value = "68";
+  }
+  if (inputText.value === "J") {
+    inputText.value = "33";
+  }
+  if (inputText.value === "K") {
+    inputText.value = "KUNO";
+    ritterKuno.hidden = false;
+  }
+  //      check ob eine evtl. eingegebene Zahl zu einer Nummer eines MS passt - dann darf sie nicht in der folgenden Suchfunktion verwendet werden
+  msFilterNummer = musikSammlung.filter((m) => String(m.nummer) === String(inputText.value));
+
+  msFilterTitel = musikSammlung;
+  if (msFilterNummer.length === 0) {
+    msFilterTitel = musikSammlung.filter((m) => m.titel.toUpperCase().includes(inputText.value));
+    buttonSpace.textContent = "..." + inputText.value + "...";
+    buttonSpace.style.display = "flex";
+    for (m of msFilterTitel) {
+      inputText.value = m.nummer;
+      if (m.nummer === "Anhang") {
+        inputText.value = m.titel.toUpperCase();
+      }
+      if (m.nummer === "KG Blau-Weiß Fischenich") {
+        inputText.value = "";
+      }
+      break;
+    }
+  }
+  if (msFilterTitel.length > 1 && msFilterTitel !== musikSammlung) {
+    buttonRechts.style.backgroundColor = "green";
+    buttonLinks.style.backgroundColor = "red";
+  } else if (msFilterTitel.length !== 1) {
+    buttonSpace.textContent = " ";
+    buttonSpace.style.display = "none";
+  }
+  inputText.hidden = true;
+  displayText();
+}
 
 function displayText() {
   if (inputText.value === "KUNO") {
@@ -262,8 +259,6 @@ function displayText() {
   outputTonart.hidden = false;
 
   containerEingabe.hidden = true;
-  // hinweisText.hidden = true;
-  //autoCheck.hidden = true;
   inputText.hidden = true;
 
   outputTitel.textContent = "";
@@ -319,7 +314,7 @@ function displayText() {
           (outputTitel.clientHeight < containerTitel.clientHeight) &
           (outputTitel.clientWidth <= containerTitel.clientWidth)
         );
-        fontGroesse = fontGroesse - 1;
+        fontGroesse = fontGroesse + 20;
         outputTitel.style.fontSize = `${fontGroesse}px`;
       }
       if (m.tonart !== " ") {
@@ -334,7 +329,7 @@ function displayText() {
           (outputTonart.clientHeight < containerTonart.clientHeight) &
           (outputTonart.clientWidth <= containerTonart.clientWidth)
         );
-        fontGroesse = fontGroesse - 1;
+        fontGroesse = fontGroesse + 30;
         outputTonart.style.fontSize = `${fontGroesse}px`;
       }
       break;
@@ -386,13 +381,6 @@ function startInput() {
   buttonSpace.style.display = "none";
 
   inputText.value = "";
-  // inputText.focus();
-  
-  if (autoCheck.style.backgroundColor === "green"){
-    inputText.inputMode = "numeric";
-  } else {
-    inputText.inputMode = "text";
-  }
 
   containerOben.style.backgroundColor = "white";
   containerTitel.style.backgroundColor = "white";
@@ -503,10 +491,10 @@ function nachLinks() {
 }
 
 function tastaturHide() {
-  for (b of buttonABC){
+  for (b of buttonABC) {
     b.hidden = true;
   }
-  for (b of buttonZahl){
+  for (b of buttonZahl) {
     b.hidden = true;
   }
   buttonLeer.hidden = true;
@@ -515,10 +503,10 @@ function tastaturHide() {
 }
 
 function tastaturShow() {
-  for (b of buttonABC){
+  for (b of buttonABC) {
     b.hidden = false;
   }
-  for (b of buttonZahl){
+  for (b of buttonZahl) {
     b.hidden = false;
   }
   buttonLeer.hidden = false;
