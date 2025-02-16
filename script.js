@@ -165,7 +165,7 @@ function displayJungfrau() {
 buttonProsit.addEventListener("touchend", displayProsit);
 buttonProsit.addEventListener("mousedown", displayProsit);
 function displayProsit() {
-  inputText.value = "PROSIT";
+  inputText.value = "15";
   displayText();
 }
 buttonHappyBirthday.addEventListener("touchend", displayHappyBirthday);
@@ -245,6 +245,8 @@ function displayText() {
   }
 
   tastaturHide();
+  containerEingabe.hidden = true;
+  inputText.hidden = true;
 
   containerGesamt.hidden = false;
   containerOben.hidden = false;
@@ -256,8 +258,7 @@ function displayText() {
   outputTitel.hidden = false;
   outputTonart.hidden = false;
 
-  containerEingabe.hidden = true;
-  inputText.hidden = true;
+  
 
   outputTitel.textContent = "";
   outputTitel.style.color = "black";
@@ -312,7 +313,7 @@ function displayText() {
           (outputTitel.clientHeight < containerTitel.clientHeight) &
           (outputTitel.clientWidth <= containerTitel.clientWidth)
         );
-        fontGroesse = fontGroesse + 20;
+        fontGroesse = fontGroesse - 1;
         outputTitel.style.fontSize = `${fontGroesse}px`;
       }
       if (m.tonart !== " ") {
@@ -327,7 +328,7 @@ function displayText() {
           (outputTonart.clientHeight < containerTonart.clientHeight) &
           (outputTonart.clientWidth <= containerTonart.clientWidth)
         );
-        fontGroesse = fontGroesse + 30;
+        fontGroesse = fontGroesse - 1;
         outputTonart.style.fontSize = `${fontGroesse}px`;
       }
       break;
@@ -498,6 +499,7 @@ function tastaturHide() {
   buttonLeer.hidden = true;
   buttonZurück.hidden = true;
   buttonReturn.hidden = true;
+  tastatur.hidden = true;
 }
 
 function tastaturShow() {
@@ -510,6 +512,7 @@ function tastaturShow() {
   buttonLeer.hidden = false;
   buttonZurück.hidden = false;
   buttonReturn.hidden = false;
+  tastatur.hidden = false;
 }
 
 if ("serviceWorker" in navigator) {
