@@ -12,6 +12,7 @@ const buttonLinks = document.getElementById("buttonLinks");
 const buttonRechts = document.getElementById("buttonRechts");
 const buttonSpace = document.getElementById("buttonSpace");
 const ritterKuno = document.getElementById("ritterKuno");
+const containerFavoriten = document.getElementById("containerFavoriten");
 const buttonEinfachTusch = document.getElementById("EinfachTusch");
 const buttonDreifachTusch = document.getElementById("DreifachTusch");
 const buttonPrinz = document.getElementById("Prinz");
@@ -26,6 +27,7 @@ const buttonZahl = document.getElementsByClassName("zahl");
 const buttonLeer = document.getElementById("space");
 const buttonZurück = document.getElementById("back");
 const buttonReturn = document.getElementById("return");
+const leerzeile = document.getElementById("leerzeile");
 
 
 function MusikStueck(id, nummer, titel, tonart, mappe) {
@@ -176,7 +178,7 @@ function displayHappyBirthday() {
 }
 
 function endInput(e) {
-  tastaturHide();
+  eingabeHide();
   inputText.value = String(inputText.value).toUpperCase();
   inputText.value = String(inputText.value).trim();
   if (inputText.value === "") {
@@ -230,7 +232,7 @@ function endInput(e) {
     buttonSpace.textContent = " ";
     buttonSpace.style.display = "none";
   }
-  inputText.hidden = true;
+  // inputText.hidden = true;
   displayText();
 }
 
@@ -244,9 +246,7 @@ function displayText() {
     buttonSpace.hidden = true;
   }
 
-  tastaturHide();
-  containerEingabe.hidden = true;
-  inputText.hidden = true;
+  eingabeHide();
 
   containerGesamt.hidden = false;
   containerOben.hidden = false;
@@ -257,8 +257,6 @@ function displayText() {
   outputText.hidden = false;
   outputTitel.hidden = false;
   outputTonart.hidden = false;
-
-  
 
   outputTitel.textContent = "";
   outputTitel.style.color = "black";
@@ -356,7 +354,7 @@ function displayText() {
 }
 
 function startInput() {
-  tastaturShow();
+  eingabeShow();
   ritterKuno.hidden = true;
   containerGesamt.hidden = true;
   containerOben.hidden = true;
@@ -367,7 +365,7 @@ function startInput() {
   outputTitel.hidden = true;
   outputTonart.hidden = true;
   containerEingabe.hidden = false;
-  inputText.hidden = false;
+  // inputText.hidden = false;
 
   buttonLinks.style.backgroundColor = "white";
   buttonRechts.style.backgroundColor = "white";
@@ -489,7 +487,18 @@ function nachLinks() {
   }
 }
 
-function tastaturHide() {
+function eingabeHide() {
+  containerEingabe.hidden = true;
+  inputText.hidden = true;
+  containerFavoriten.hidden = true;
+  buttonEinfachTusch.hidden = true;
+  buttonDreifachTusch.hidden = true;
+  buttonPrinz.hidden = true;
+  buttonBauer.hidden = true;
+  buttonJungfrau.hidden = true;
+  buttonProsit.hidden = true;
+  buttonHappyBirthday.hidden = true;
+  autoCheck.hidden = true;
   for (b of buttonABC) {
     b.hidden = true;
   }
@@ -498,11 +507,22 @@ function tastaturHide() {
   }
   buttonLeer.hidden = true;
   buttonZurück.hidden = true;
+  leerzeile.hidden = true;
   buttonReturn.hidden = true;
-  tastatur.hidden = true;
 }
 
-function tastaturShow() {
+function eingabeShow() {
+  containerEingabe.hidden = false;
+  inputText.hidden = false;
+  containerFavoriten.hidden = false;
+  buttonEinfachTusch.hidden = false;
+  buttonDreifachTusch.hidden = false;
+  buttonPrinz.hidden = false;
+  buttonBauer.hidden = false;
+  buttonJungfrau.hidden = false;
+  buttonProsit.hidden = false;
+  buttonHappyBirthday.hidden = false;
+  autoCheck.hidden = false;
   for (b of buttonABC) {
     b.hidden = false;
   }
@@ -511,8 +531,8 @@ function tastaturShow() {
   }
   buttonLeer.hidden = false;
   buttonZurück.hidden = false;
+  leerzeile.hidden = false;
   buttonReturn.hidden = false;
-  tastatur.hidden = false;
 }
 
 if ("serviceWorker" in navigator) {

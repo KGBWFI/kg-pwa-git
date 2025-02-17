@@ -88,12 +88,15 @@ body, html {
 }
 
 .containerEingabe {
+    display:flexbox;
+    flex-direction: column;
+    justify-content: space-evenly;
     height: 100%;
 }
 
 .inputText {
     width: 100%;
-    height: 60%;
+    height: 20%;
     font-size: 10em;
     background-color:rgb(96, 150, 244);
     text-align: center;
@@ -101,7 +104,7 @@ body, html {
 }
 
 .containerFavoriten {
-    height: 15%;
+    height: 5%;
     display: flex;
     flex-direction:row;
     justify-content:space-between;
@@ -112,7 +115,7 @@ body, html {
 }
 
 .containerAutomatik {
-    height: 15%;
+    height: 5%;
     display: flex;
     /* flex-direction: row; */
     /* justify-content: space-between; */
@@ -136,10 +139,8 @@ body, html {
 .tastatur {
     display: flex;
     flex-direction: row;
+    height: 70%;
     justify-content: space-evenly;
-    /* height: 70%; */
-    width:auto;
-    background-color: white;
 }
 
 .tastaturABC {
@@ -147,7 +148,7 @@ body, html {
     flex-direction: column;
     justify-content: space-around;
     width: 70%;
-    height: 100%;
+    /* height: 100%; */
 }
 
 .reiheABC {
@@ -206,7 +207,7 @@ body, html {
     display: flex;
     flex-direction: column;
     width: 27%;
-    height: 100%;
+    /* height: 100%; */
 }
 
 .reiheZahl {
