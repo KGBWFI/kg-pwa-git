@@ -43,7 +43,7 @@ let msFilterNummer = [MusikStueck];
 let msFilterTitel = [MusikStueck];
 let msGeladen = [MusikStueck];
 
-inputText.addEventListener("keydown", endInput);
+// inputText.addEventListener("keydown", endInput);
 
 for (b of buttonABC) {
   b.addEventListener("onclick", updateInput);
@@ -83,7 +83,7 @@ autoCheck.addEventListener("onclick", automatikEinaus);
 autoCheck.addEventListener("mousedown", automatikEinaus);
 
 function updateInput(e) {
-  console.log(e);
+  buttonReturn.style.backgroundColor = "red";
   const t = e.srcElement.textContent
   if (t === "⏎") {
     endInput();
@@ -536,7 +536,7 @@ function eingabeShow() {
   buttonZurück.hidden = false;
   leerzeile.hidden = false;
   buttonReturn.hidden = false;
-  buttonReturn.value = "Z E I G E N";
+  buttonReturn.style.backgroundColor = "dodgerblue";
 }
 
 if ("serviceWorker" in navigator) {
