@@ -533,6 +533,7 @@ function eingabeShow() {
   buttonZurück.hidden = false;
   leerzeile.hidden = false;
   buttonReturn.hidden = false;
+  buttonReturn.value = "Z E I G E N";
 }
 
 if ("serviceWorker" in navigator) {
