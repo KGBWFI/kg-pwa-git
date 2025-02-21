@@ -57,12 +57,14 @@ body, html {
 .buttonLinks {
     width: 10%;
     display: flex;
-    /* background-color: white; */
+    background-color: white;
     /* border-color: red; */
     font-size: xxx-large;
     /* text-align: center; */
     /* align-items: center; */
     justify-content: center;
+    border-style:groove;
+
 }
  .buttonSpace {
     width: 20%;
@@ -76,11 +78,12 @@ body, html {
 .buttonRechts {
     width: 10%;
     display: flex;
-    /* background-color: white; */
+    background-color: white;
     /* border-color: green; */
     font-size: xxx-large;
     color: black;
     justify-content: center;
+    border-style: groove;
 } 
 
 .containerUnten {
