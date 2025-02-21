@@ -229,8 +229,8 @@ function endInput(e) {
     }
   }
   if (msFilterTitel.length > 1 && msFilterTitel !== musikSammlung) {
-    buttonRechts.style.backgroundColor = "green";
-    buttonLinks.style.backgroundColor = "red";
+    // buttonRechts.style.backgroundColor = "green";
+    // buttonLinks.style.backgroundColor = "red";
   } else if (msFilterTitel.length !== 1) {
     buttonSpace.textContent = " ";
     buttonSpace.style.display = "none";
@@ -370,8 +370,8 @@ function startInput() {
   containerEingabe.hidden = false;
   // inputText.hidden = false;
 
-  buttonLinks.style.backgroundColor = "white";
-  buttonRechts.style.backgroundColor = "white";
+  // buttonLinks.style.backgroundColor = "white";
+  // buttonRechts.style.backgroundColor = "white";
 
   outputText.textContent = "";
   outputTitel.textContent = "";
@@ -440,10 +440,10 @@ function nachRechts() {
       break;
     }
   }
-  if (buttonRechts.style.backgroundColor !== "green") {
-    buttonSpace.textContent = " ";
-    buttonSpace.style.display = "none";
-  }
+  // if (buttonRechts.style.backgroundColor !== "green") {
+  //   buttonSpace.textContent = " ";
+  //   buttonSpace.style.display = "none";
+  // }
 }
 
 function nachLinks() {
@@ -484,10 +484,10 @@ function nachLinks() {
       break;
     }
   }
-  if (buttonLinks.style.backgroundColor !== "red") {
-    buttonSpace.textContent = " ";
-    buttonSpace.style.display = "none";
-  }
+  // if (buttonLinks.style.backgroundColor !== "red") {
+  //   buttonSpace.textContent = " ";
+  //   buttonSpace.style.display = "none";
+  // }
 }
 
 function eingabeHide() {

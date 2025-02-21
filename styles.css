@@ -55,9 +55,9 @@ body, html {
 } 
 
 .buttonLinks {
-    width: 50%;
+    width: 10%;
     display: flex;
-    background-color: white;
+    /* background-color: white; */
     /* border-color: red; */
     font-size: xxx-large;
     /* text-align: center; */
@@ -74,9 +74,9 @@ body, html {
  }
 
 .buttonRechts {
-    width: 50%;
+    width: 10%;
     display: flex;
-    background-color: white;
+    /* background-color: white; */
     /* border-color: green; */
     font-size: xxx-large;
     color: black;
