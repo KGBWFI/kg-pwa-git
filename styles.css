@@ -55,10 +55,14 @@ body, html {
 } 
 
 .buttonLinks {
-    width: 10%;
+    width: 50%;
     display: flex;
     background-color: white;
-    border-color: red;
+    /* border-color: red; */
+    font-size: xxx-large;
+    /* text-align: center; */
+    /* align-items: center; */
+    justify-content: center;
 }
  .buttonSpace {
     width: 20%;
@@ -70,10 +74,13 @@ body, html {
  }
 
 .buttonRechts {
-    width: 10%;
+    width: 50%;
     display: flex;
     background-color: white;
-    border-color: green;
+    /* border-color: green; */
+    font-size: xxx-large;
+    color: black;
+    justify-content: center;
 } 
 
 .containerUnten {
@@ -177,7 +184,7 @@ body, html {
     color: darkslategray;
     width: 100%;
     background-color:lightgrey;
-    border-color: black;
+    border-color: darkgrey;
     border-width: 0.3em;
 }
 
