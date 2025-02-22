@@ -194,11 +194,11 @@ body, html {
 }
 
 .back {
-    font-size: xx-large;
+    font-size: xxx-large;
     height: 100%;
     width: 22%;
     font-weight: 900;
-    color:grey;
+    color:darkslategray;
     background-color: lightgray;
 }
 
