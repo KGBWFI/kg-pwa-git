@@ -88,11 +88,11 @@ function updateInput(e) {
   if (t === "⏎") {
     endInput();
   } else if (t === "CLEAR" && t != "") {
-    const str = String(inputText.value);
+    const str = String(inputText.textContent);
     const strShorter = str.slice(0, str.length - 1);
-    inputText.value = strShorter;
+    inputText.textContent = strShorter;
   } else {
-    inputText.value = inputText.value + t;
+    inputText.textContent = inputText.textContent + t;
   }
 }
 
@@ -140,90 +140,90 @@ async function musikSammlungErstellen() {
 buttonEinfachTusch.addEventListener("touchend", displayEinfachTusch);
 buttonEinfachTusch.addEventListener("mousedown", displayEinfachTusch);
 function displayEinfachTusch() {
-  inputText.value = "1 X TUSCH";
+  inputText.textContent = "1 X TUSCH";
   displayText();
 }
 buttonDreifachTusch.addEventListener("touchend", displayDreifachTusch);
 buttonDreifachTusch.addEventListener("mousedown", displayDreifachTusch);
 function displayDreifachTusch() {
-  inputText.value = "3 X TUSCH";
+  inputText.textContent = "3 X TUSCH";
   displayText();
 }
 buttonPrinz.addEventListener("touchend", displayPrinz);
 buttonPrinz.addEventListener("mousedown", displayPrinz);
 function displayPrinz() {
-  inputText.value = "3";
+  inputText.textContent = "3";
   displayText();
 }
 buttonBauer.addEventListener("touchend", displayBauer);
 buttonBauer.addEventListener("mousedown", displayBauer);
 function displayBauer() {
-  inputText.value = "68";
+  inputText.textContent = "68";
   displayText();
 }
 buttonJungfrau.addEventListener("touchend", displayJungfrau);
 buttonJungfrau.addEventListener("mousedown", displayJungfrau);
 function displayJungfrau() {
-  inputText.value = "33";
+  inputText.textContent = "33";
   displayText();
 }
 buttonProsit.addEventListener("touchend", displayProsit);
 buttonProsit.addEventListener("mousedown", displayProsit);
 function displayProsit() {
-  inputText.value = "15";
+  inputText.textContent = "15";
   displayText();
 }
 buttonHappyBirthday.addEventListener("touchend", displayHappyBirthday);
 buttonHappyBirthday.addEventListener("mousedown", displayHappyBirthday);
 function displayHappyBirthday() {
-  inputText.value = "Happy Birthday";
+  inputText.textContent = "Happy Birthday";
   displayText();
 }
 
 function endInput(e) {
   eingabeHide();
-  inputText.value = String(inputText.value).toUpperCase();
-  inputText.value = String(inputText.value).trim();
-  if (inputText.value === "") {
-    inputText.value = "KUNO";
+  inputText.textContent = String(inputText.textContent).toUpperCase();
+  inputText.textContent = String(inputText.textContent).trim();
+  if (inputText.textContent === "") {
+    inputText.textContent = "KUNO";
   }
-  if (inputText.value === "T") {
-    inputText.value = "1 x TUSCH";
+  if (inputText.textContent === "T") {
+    inputText.textContent = "1 x TUSCH";
   }
-  if (String(inputText.value).startsWith("TT")) {
-    inputText.value = "3 x TUSCH";
+  if (String(inputText.textContent).startsWith("TT")) {
+    inputText.textContent = "3 x TUSCH";
   }
-  if (inputText.value === "H") {
-    inputText.value = "Happy Birthday";
+  if (inputText.textContent === "H") {
+    inputText.textContent = "Happy Birthday";
   }
-  if (inputText.value === "P") {
-    inputText.value = "3";
+  if (inputText.textContent === "P") {
+    inputText.textContent = "3";
   }
-  if (inputText.value === "B") {
-    inputText.value = "68";
+  if (inputText.textContent === "B") {
+    inputText.textContent = "68";
   }
-  if (inputText.value === "J") {
-    inputText.value = "33";
+  if (inputText.textContent === "J") {
+    inputText.textContent = "33";
   }
-  if (inputText.value === "K") {
-    inputText.value = "KUNO";
+  if (inputText.textContent === "K") {
+    inputText.textContent = "KUNO";
     ritterKuno.hidden = false;
   }
   //      check ob eine evtl. eingegebene Zahl zu einer Nummer eines MS passt - dann darf sie nicht in der folgenden Suchfunktion verwendet werden
-  msFilterNummer = musikSammlung.filter((m) => String(m.nummer) === String(inputText.value));
+  msFilterNummer = musikSammlung.filter((m) => String(m.nummer) === String(inputText.textContent));
 
   msFilterTitel = musikSammlung;
   if (msFilterNummer.length === 0) {
-    msFilterTitel = musikSammlung.filter((m) => m.titel.toUpperCase().includes(inputText.value));
-    buttonSpace.textContent = "..." + inputText.value + "...";
+    msFilterTitel = musikSammlung.filter((m) => m.titel.toUpperCase().includes(inputText.textContent));
+    buttonSpace.textContent = "..." + inputText.textContent + "...";
     buttonSpace.style.display = "flex";
     for (m of msFilterTitel) {
-      inputText.value = m.nummer;
+      inputText.textContent = m.nummer;
       if (m.nummer === "Anhang") {
-        inputText.value = m.titel.toUpperCase();
+        inputText.textContent = m.titel.toUpperCase();
       }
       if (m.nummer === "KG Blau-Weiß Fischenich") {
-        inputText.value = "";
+        inputText.textContent = "";
       }
       break;
     }
@@ -240,7 +240,7 @@ function endInput(e) {
 }
 
 function displayText() {
-  if (inputText.value === "KUNO") {
+  if (inputText.textContent === "KUNO") {
     ritterKuno.hidden = false;
     containerGesamt.hidden = true;
     containerUnten.hidden = true;
@@ -273,11 +273,11 @@ function displayText() {
 
   outputText.textContent = "";
 
-  inputText.value = String(inputText.value).trimEnd();
+  inputText.textContent = String(inputText.textContent).trimEnd();
 
   for (m of musikSammlung) {
     if (
-      String(m.nummer).toUpperCase() === String(inputText.value).toUpperCase()
+      String(m.nummer).toUpperCase() === String(inputText.textContent).toUpperCase()
     ) {
       if (String(m.mappe).startsWith("gelb")) {
         containerTitel.style.backgroundColor = "yellow";
@@ -336,8 +336,8 @@ function displayText() {
     }
   }
 
-  if (inputText.value !== "KUNO") {
-    outputText.textContent = inputText.value;
+  if (inputText.textContent !== "KUNO") {
+    outputText.textContent = inputText.textContent;
     let fontGroesse = 1;
     do {
       fontGroesse = fontGroesse + 1;
@@ -345,14 +345,14 @@ function displayText() {
       outputText.style.fontFamily = "Times";
       outputText.style.overflowWrap = "normal";
       // outputText.style.hyphens = "auto";
-      outputText.textContent = inputText.value;
+      outputText.textContent = inputText.textContent;
     } while (
       (outputText.clientHeight < containerGesamt.clientHeight) &
       (outputText.clientWidth <= containerGesamt.clientWidth)
     );
     fontGroesse = fontGroesse - 1;
     outputText.style.fontSize = `${fontGroesse}px`;
-    outputText.textContent = inputText.value;
+    outputText.textContent = inputText.textContent;
   }
 }
 
@@ -380,7 +380,7 @@ function startInput() {
   buttonSpace.textContent = " ";
   buttonSpace.style.display = "none";
 
-  inputText.value = "";
+  inputText.textContent = "";
 
   containerOben.style.backgroundColor = "white";
   containerTitel.style.backgroundColor = "white";
@@ -404,16 +404,16 @@ function nachRechts() {
   }
   // Verarbeiten einer Zahl, die nicht als Nummer eines MS vorkommt
   if (
-    parseFloat(inputText.value) > 0 &&
-    parseFloat(inputText.value) < 1000 &&
-    musikSammlung.filter((e) => e.nummer === inputText.value).length === 0
+    parseFloat(inputText.textContent) > 0 &&
+    parseFloat(inputText.textContent) < 1000 &&
+    musikSammlung.filter((e) => e.nummer === inputText.textContent).length === 0
   ) {
     msFilterTitel = musikSammlung;
-    let i = parseFloat(inputText.value);
+    let i = parseFloat(inputText.textContent);
     while (i >= 0) {
       const arrayTemp = musikSammlung.filter((e) => parseFloat(e.nummer) === i);
       if (arrayTemp.length > 0) {
-        inputText.value = arrayTemp[0].nummer;
+        inputText.textContent = arrayTemp[0].nummer;
         break;
       }
       i = i - 1;
@@ -422,19 +422,19 @@ function nachRechts() {
   let index = 0;
   for (m of msFilterTitel) {
     if (
-      String(inputText.value) === String(m.nummer) ||
-      String(inputText.value) === String(m.titel).toUpperCase()
+      String(inputText.textContent) === String(m.nummer) ||
+      String(inputText.textContent) === String(m.titel).toUpperCase()
     ) {
-      // alert("! "+inputText.value);
+      // alert("! "+inputText.textContent);
       index = msFilterTitel.indexOf(m);
       // alert("index"+index);
       // alert("msFiTiLength:"+msFilterTitel.length);
       if (index < msFilterTitel.length - 1) {
-        inputText.value = msFilterTitel[index + 1].nummer;
+        inputText.textContent = msFilterTitel[index + 1].nummer;
         // alert("msFiTi.index..index+1..index+2.nummer"+musikSammlung[index].nummer + "/"+musikSammlung[index+1].nummer + "/"+musikSammlung[index+2].nummer);
       }
       if (msFilterTitel[index + 1].nummer === "Anhang") {
-        inputText.value = msFilterTitel[index + 1].titel.toUpperCase();
+        inputText.textContent = msFilterTitel[index + 1].titel.toUpperCase();
       }
       displayText();
       break;
@@ -451,16 +451,16 @@ function nachLinks() {
     msFilterTitel = musikSammlung;
   }
   if (
-    parseFloat(inputText.value) > 0 &&
-    parseFloat(inputText.value) < 1000 &&
-    musikSammlung.filter((e) => e.nummer === inputText.value).length === 0
+    parseFloat(inputText.textContent) > 0 &&
+    parseFloat(inputText.textContent) < 1000 &&
+    musikSammlung.filter((e) => e.nummer === inputText.textContent).length === 0
   ) {
     msFilterTitel = musikSammlung;
-    let i = parseFloat(inputText.value);
+    let i = parseFloat(inputText.textContent);
     while (i <= musikSammlung[musikSammlung.length - 1].nummer) {
       const arrayTemp = musikSammlung.filter((e) => parseFloat(e.nummer) === i);
       if (arrayTemp.length > 0) {
-        inputText.value = arrayTemp[0].nummer;
+        inputText.textContent = arrayTemp[0].nummer;
         break;
       }
       i = i + 1;
@@ -470,15 +470,15 @@ function nachLinks() {
   let index = 0;
   for (m of msFilterTitel) {
     if (
-      inputText.value === String(m.nummer) ||
-      inputText.value === String(m.titel).toUpperCase()
+      inputText.textContent === String(m.nummer) ||
+      inputText.textContent === String(m.titel).toUpperCase()
     ) {
       index = msFilterTitel.indexOf(m);
       if (index > 0) {
-        inputText.value = msFilterTitel[index - 1].nummer;
+        inputText.textContent = msFilterTitel[index - 1].nummer;
       }
       if (msFilterTitel[index - 1].nummer === "Anhang") {
-        inputText.value = msFilterTitel[index - 1].titel.toUpperCase();
+        inputText.textContent = msFilterTitel[index - 1].titel.toUpperCase();
       }
       displayText();
       break;

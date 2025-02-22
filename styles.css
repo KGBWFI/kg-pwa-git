@@ -109,7 +109,9 @@ body, html {
     font-size:6em;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     background-color:rgb(96, 150, 244);
-    text-align: center;
+    text-align: center; 
+    overflow:scroll; 
+    text-overflow:clip;
     color: black;
 }
 
