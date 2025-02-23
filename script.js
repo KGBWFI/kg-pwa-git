@@ -13,8 +13,8 @@ const buttonRechts = document.getElementById("buttonRechts");
 const buttonSpace = document.getElementById("buttonSpace");
 const ritterKuno = document.getElementById("ritterKuno");
 const containerFavoriten = document.getElementById("containerFavoriten");
-const buttonEinfachTusch = document.getElementById("EinfachTusch");
-const buttonDreifachTusch = document.getElementById("DreifachTusch");
+// const buttonEinfachTusch = document.getElementById("EinfachTusch");
+// const buttonDreifachTusch = document.getElementById("DreifachTusch");
 const buttonPrinz = document.getElementById("Prinz");
 const buttonBauer = document.getElementById("Bauer");
 const buttonJungfrau = document.getElementById("Jungfrau");
@@ -28,7 +28,14 @@ const buttonLeer = document.getElementById("space");
 const buttonZurück = document.getElementById("back");
 const buttonReturn = document.getElementById("return");
 const leerzeile = document.getElementById("leerzeile");
-
+const speicher = [];
+let speicherIndex = 0;
+const speicherPlus = document.getElementById("speicherPlus");
+const speicherCall = document.getElementById("speicherCall");
+const speicherZurück = document.getElementById("speicherZurück");
+const speicherZähler = document.getElementById("speicherZähler");
+const speicherVor = document.getElementById("speicherVor");
+const speicherEntfern = document.getElementById("speicherEntfern");
 
 function MusikStueck(id, nummer, titel, tonart, mappe) {
   this.id = id;
@@ -82,10 +89,75 @@ ritterKuno.addEventListener("mousedown", startInput);
 autoCheck.addEventListener("onclick", automatikEinaus);
 autoCheck.addEventListener("mousedown", automatikEinaus);
 
+speicherPlus.addEventListener("oncllick", speicherPush);
+speicherPlus.addEventListener("mousedown", speicherPush);
+
+speicherCall.addEventListener("oncllick", speicherShow);
+speicherCall.addEventListener("mousedown", speicherShow);
+
+speicherZurück.addEventListener("oncllick", speicherShowBefore);
+speicherZurück.addEventListener("mousedown", speicherShowBefore);
+
+speicherVor.addEventListener("oncllick", speicherShowNext);
+speicherVor.addEventListener("mousedown", speicherShowNext);
+
+speicherEntfern.addEventListener("oncllick", speicherRemove);
+speicherEntfern.addEventListener("mousedown", speicherRemove);
+
+
+
+function speicherPush() {
+  speicher.push(inputText.textContent);
+  ++speicherIndex;
+  speicherZähler.textContent = speicherIndex + "/" + speicher.length;
+  // inputText.style.backgroundColor = "orange";
+}
+
+function speicherShow() {
+  if (speicher.length > 0) {
+    inputText.textContent = speicher[speicherIndex - 1];
+    inputText.style.backgroundColor = "orange";
+    buttonReturn.style.backgroundColor = "red";
+  }
+}
+
+function speicherShowBefore() {
+  if (speicherIndex > 1) {
+    --speicherIndex;
+    speicherShow();
+    speicherZähler.textContent = speicherIndex + "/" + speicher.length;
+  }
+}
+
+function speicherShowNext() {
+  if (speicherIndex < speicher.length) {
+    ++speicherIndex;
+    speicherShow();
+    speicherZähler.textContent = speicherIndex + "/" + speicher.length;
+  }
+}
+
+function speicherRemove() {
+  if (speicher.length > 0) {
+    speicher.splice(speicherIndex - 1, 1);
+    speicherIndex = speicher.length;
+    if (speicherIndex > 0) {
+      inputText.textContent = speicher[speicherIndex - 1];
+    } else {
+      inputText.textContent = "";
+      inputText.style.backgroundColor = "rgb(96, 150, 244)";
+    }
+    speicherZähler.textContent = speicherIndex + "/" + speicher.length;
+  }
+}
+
 function updateInput(e) {
   buttonReturn.style.backgroundColor = "red";
   const t = e.srcElement.textContent
   if (t === "⏎") {
+    if (inputText.style.backgroundColor != "orange") {
+      speicherPush();
+    }
     endInput();
   } else if (t === "⌫" && t != "") {
     const str = String(inputText.textContent);
@@ -137,18 +209,18 @@ async function musikSammlungErstellen() {
   msFilterTitel = _musikSammlung;
 }
 
-buttonEinfachTusch.addEventListener("touchend", displayEinfachTusch);
-buttonEinfachTusch.addEventListener("mousedown", displayEinfachTusch);
-function displayEinfachTusch() {
-  inputText.textContent = "1 X TUSCH";
-  displayText();
-}
-buttonDreifachTusch.addEventListener("touchend", displayDreifachTusch);
-buttonDreifachTusch.addEventListener("mousedown", displayDreifachTusch);
-function displayDreifachTusch() {
-  inputText.textContent = "3 X TUSCH";
-  displayText();
-}
+// buttonEinfachTusch.addEventListener("touchend", displayEinfachTusch);
+// buttonEinfachTusch.addEventListener("mousedown", displayEinfachTusch);
+// function displayEinfachTusch() {
+//   inputText.textContent = "1 X TUSCH";
+//   displayText();
+// }
+// buttonDreifachTusch.addEventListener("touchend", displayDreifachTusch);
+// buttonDreifachTusch.addEventListener("mousedown", displayDreifachTusch);
+// function displayDreifachTusch() {
+//   inputText.textContent = "3 X TUSCH";
+//   displayText();
+// }
 buttonPrinz.addEventListener("touchend", displayPrinz);
 buttonPrinz.addEventListener("mousedown", displayPrinz);
 function displayPrinz() {
@@ -494,8 +566,8 @@ function eingabeHide() {
   containerEingabe.hidden = true;
   inputText.hidden = true;
   containerFavoriten.hidden = true;
-  buttonEinfachTusch.hidden = true;
-  buttonDreifachTusch.hidden = true;
+  // buttonEinfachTusch.hidden = true;
+  // buttonDreifachTusch.hidden = true;
   buttonPrinz.hidden = true;
   buttonBauer.hidden = true;
   buttonJungfrau.hidden = true;
@@ -517,9 +589,12 @@ function eingabeHide() {
 function eingabeShow() {
   containerEingabe.hidden = false;
   inputText.hidden = false;
+  inputText.style.backgroundColor = "rgb(96, 150, 244)";
+  speicherIndex = speicher.length;
+  speicherZähler.textContent = speicherIndex + "/" + speicher.length;
   containerFavoriten.hidden = false;
-  buttonEinfachTusch.hidden = false;
-  buttonDreifachTusch.hidden = false;
+  // buttonEinfachTusch.hidden = false;
+  // buttonDreifachTusch.hidden = false;
   buttonPrinz.hidden = false;
   buttonBauer.hidden = false;
   buttonJungfrau.hidden = false;
