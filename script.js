@@ -110,7 +110,7 @@ function speicherPush() {
   speicher.push(inputText.textContent);
   ++speicherIndex;
   speicherZähler.textContent = speicherIndex + "/" + speicher.length;
-  // inputText.style.backgroundColor = "orange";
+  inputText.style.backgroundColor = "orange";
 }
 
 function speicherShow() {
@@ -139,6 +139,7 @@ function speicherShowNext() {
 
 function speicherRemove() {
   if (speicher.length > 0) {
+    inputText.style.backgroundColor = "orange";
     speicher.splice(speicherIndex - 1, 1);
     speicherIndex = speicher.length;
     if (speicherIndex > 0) {
@@ -146,6 +147,7 @@ function speicherRemove() {
     } else {
       inputText.textContent = "";
       inputText.style.backgroundColor = "rgb(96, 150, 244)";
+      buttonReturn.style.backgroundColor = "rgb(96, 150, 244)";
     }
     speicherZähler.textContent = speicherIndex + "/" + speicher.length;
   }
@@ -163,6 +165,10 @@ function updateInput(e) {
     const str = String(inputText.textContent);
     const strShorter = str.slice(0, str.length - 1);
     inputText.textContent = strShorter;
+    if (inputText.textContent === ""){
+      inputText.style.backgroundColor = "rgb(96, 150, 244)";
+      buttonReturn.style.backgroundColor = "rgb(96, 150, 244)";
+    }
   } else {
     inputText.textContent = inputText.textContent + t;
   }
