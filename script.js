@@ -87,7 +87,7 @@ function updateInput(e) {
   const t = e.srcElement.textContent
   if (t === "⏎") {
     endInput();
-  } else if (t === "CLEAR" && t != "") {
+  } else if (t === "⌫" && t != "") {
     const str = String(inputText.textContent);
     const strShorter = str.slice(0, str.length - 1);
     inputText.textContent = strShorter;
@@ -176,7 +176,7 @@ function displayProsit() {
 buttonHappyBirthday.addEventListener("touchend", displayHappyBirthday);
 buttonHappyBirthday.addEventListener("mousedown", displayHappyBirthday);
 function displayHappyBirthday() {
-  inputText.textContent = "Happy Birthday";
+  inputText.textContent = "Happy Birthday in As";
   displayText();
 }
 
@@ -194,7 +194,7 @@ function endInput(e) {
     inputText.textContent = "3 x TUSCH";
   }
   if (inputText.textContent === "H") {
-    inputText.textContent = "Happy Birthday";
+    inputText.textContent = "Happy Birthday in As";
   }
   if (inputText.textContent === "P") {
     inputText.textContent = "3";
