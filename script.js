@@ -127,7 +127,7 @@ function speicherPush() {
 }
 
 function speicherShow() {
-  if (speicher.length > 0  && inputText.style.backgroundColor != "orange") {
+  if (speicher.length > 0 && inputText.style.backgroundColor != "orange") {
     inputText.textContent = speicher[speicherIndex - 1];
     inputText.style.backgroundColor = "orange";
     buttonReturn.style.backgroundColor = "red";
@@ -178,8 +178,7 @@ function speicherRemove() {
       speicherVor.hidden = true;
       speicherEntfern.hidden = true;
       speicherVerlassen.hidden = true;
-      // buttonZurück.style.backgroundColor = "lightgray"; 
-       
+      // buttonZurück.style.backgroundColor = "lightgray";  
     }
     speicherZähler.textContent = speicher.length === 0 ? 0 : `${speicherIndex}/${speicher.length}`;
   }
@@ -197,7 +196,7 @@ function speicherLeave() {
     inputText.style.backgroundColor = "rgb(96, 150, 244)";
     buttonReturn.style.backgroundColor = "rgb(96, 150, 244)";
     speicherPlus.hidden = false;
-    if (speicher.length === 0){
+    if (speicher.length === 0) {
       speicherCall.hidden = true;
     } else {
       speicherCall.hidden = false
@@ -386,7 +385,7 @@ function endInput(e) {
     buttonSpace.style.display = "none";
     buttonLinks.style.backgroundColor = "white";
     buttonLinks.style.display = "flex";
-  } else if (msFilterTitel.length === 1){
+  } else if (msFilterTitel.length === 1) {
     buttonRechts.style.display = "none";
     buttonSpace.textContent = " ";
     buttonSpace.style.display = "none";
@@ -426,8 +425,7 @@ function displayText() {
   inputText.textContent = String(inputText.textContent).trimEnd();
 
   for (m of musikSammlung) {
-    if (String(m.nummer).toUpperCase() === String(inputText.textContent).toUpperCase()) 
-    {
+    if (String(m.nummer).toUpperCase() === String(inputText.textContent).toUpperCase()) {
       if (String(m.mappe).startsWith("gelb")) {
         containerTitel.style.backgroundColor = "yellow";
         outputTitel.style.backgroundColor = "yellow";
@@ -678,7 +676,7 @@ function eingabeShow() {
   buttonProsit.hidden = false;
   buttonHappyBirthday.hidden = false;
   speicherPlus.hidden = false;
-  if (speicher.length === 0){
+  if (speicher.length === 0) {
     speicherCall.hidden = true;
   } else {
     speicherCall.hidden = false
