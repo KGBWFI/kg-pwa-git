@@ -113,7 +113,7 @@ function speicherPush() {
     speicherZähler.textContent = speicherIndex + "/" + speicher.length;
     inputText.style.backgroundColor = "orange";
     buttonZurück.style.backgroundColor = "orange";
-    speicherCall.hidden = false;
+    // speicherCall.hidden = false;
   }
 }
 
@@ -122,12 +122,12 @@ function speicherShow() {
     inputText.textContent = speicher[speicherIndex - 1];
     inputText.style.backgroundColor = "orange";
     buttonReturn.style.backgroundColor = "red";
-    speicherPlus.hidden = true;
-    speicherCall.hidden = true;
-    speicherZurück.hidden = false;
-    speicherZähler.hidden = false;
-    speicherVor.hidden = false;
-    speicherEntfern.hidden = false;
+    // speicherPlus.hidden = true;
+    // speicherCall.hidden = true;
+    // speicherZurück.hidden = false;
+    // speicherZähler.hidden = false;
+    // speicherVor.hidden = false;
+    // speicherEntfern.hidden = false;
     buttonZurück.style.backgroundColor = "orange";
   }
 }
@@ -159,14 +159,14 @@ function speicherRemove() {
       inputText.textContent = "";
       inputText.style.backgroundColor = "rgb(96, 150, 244)";
       buttonReturn.style.backgroundColor = "rgb(96, 150, 244)";
-      speicherPlus.hidden = false;
-      speicherCall.hidden = false;
-      speicherZurück.hidden = true;
-      speicherZähler.hidden = true;
-      speicherVor.hidden = true;
-      speicherEntfern.hidden = true;
+      // speicherPlus.hidden = false;
+      // speicherCall.hidden = false;
+      // speicherZurück.hidden = true;
+      // speicherZähler.hidden = true;
+      // speicherVor.hidden = true;
+      // speicherEntfern.hidden = true;
       buttonZurück.style.backgroundColor = "lightgray"; 
-      speicherCall.hidden = true; 
+      // speicherCall.hidden = true; 
     }
     speicherZähler.textContent = speicherIndex + "/" + speicher.length;
   }
@@ -191,12 +191,12 @@ function updateInput(e) {
     if (inputText.textContent === "") {
       inputText.style.backgroundColor = "rgb(96, 150, 244)";
       buttonReturn.style.backgroundColor = "rgb(96, 150, 244)";
-      speicherPlus.hidden = false;
-      speicherCall.hidden = false;
-      speicherZurück.hidden = true;
-      speicherZähler.hidden = true;
-      speicherVor.hidden = true;
-      speicherEntfern.hidden = true;  
+      // speicherPlus.hidden = false;
+      // speicherCall.hidden = false;
+      // speicherZurück.hidden = true;
+      // speicherZähler.hidden = true;
+      // speicherVor.hidden = true;
+      // speicherEntfern.hidden = true;  
     }
   } else {
     inputText.textContent = inputText.textContent + t;
@@ -635,12 +635,12 @@ function eingabeShow() {
   buttonJungfrau.hidden = false;
   buttonProsit.hidden = false;
   buttonHappyBirthday.hidden = false;
-  speicherPlus.hidden = false;
-  speicherCall.hidden = false;
-  speicherZurück.hidden = true;
-  speicherZähler.hidden = true;
-  speicherVor.hidden = true;
-  speicherEntfern.hidden = true;
+  // speicherPlus.hidden = false;
+  // speicherCall.hidden = false;
+  // speicherZurück.hidden = true;
+  // speicherZähler.hidden = true;
+  // speicherVor.hidden = true;
+  // speicherEntfern.hidden = true;
   autoCheck.hidden = false;
   for (b of buttonABC) {
     b.hidden = false;
