@@ -118,7 +118,7 @@ function speicherPush() {
     speicherZähler.textContent = speicher.length;
     // inputText.style.backgroundColor = "orange";
     // buttonZurück.style.backgroundColor = "orange";
-    // speicherCall.hidden = false;
+    speicherCall.hidden = false;
   }
   if (inputText.textContent != "" && inputText.style.backgroundColor === "orange") {
     speicher[speicherIndex - 1] = inputText.textContent;
@@ -133,12 +133,13 @@ function speicherShow() {
     buttonReturn.style.backgroundColor = "red";
     speicherIndex = speicher.length;
     speicherZähler.textContent = speicherIndex + "/" + speicher.length;
-    // speicherPlus.hidden = true;
-    // speicherCall.hidden = true;
-    // speicherZurück.hidden = false;
-    // speicherZähler.hidden = false;
-    // speicherVor.hidden = false;
-    // speicherEntfern.hidden = false;
+    speicherPlus.hidden = false;
+    speicherCall.hidden = true;
+    speicherZurück.hidden = false;
+    speicherZähler.hidden = false;
+    speicherVor.hidden = false;
+    speicherEntfern.hidden = false;
+    speicherVerlassen.hidden = false;
     // buttonZurück.style.backgroundColor = "orange";
   }
 }
@@ -170,16 +171,17 @@ function speicherRemove() {
       inputText.textContent = "";
       inputText.style.backgroundColor = "rgb(96, 150, 244)";
       buttonReturn.style.backgroundColor = "rgb(96, 150, 244)";
-      // speicherPlus.hidden = false;
-      // speicherCall.hidden = false;
-      // speicherZurück.hidden = true;
-      // speicherZähler.hidden = true;
-      // speicherVor.hidden = true;
-      // speicherEntfern.hidden = true;
+      speicherPlus.hidden = false;
+      speicherCall.hidden = true;
+      speicherZurück.hidden = true;
+      speicherZähler.hidden = false;
+      speicherVor.hidden = true;
+      speicherEntfern.hidden = true;
+      speicherVerlassen.hidden = true;
       // buttonZurück.style.backgroundColor = "lightgray"; 
-      // speicherCall.hidden = true; 
+       
     }
-    speicherZähler.textContent = speicherIndex + "/" + speicher.length;
+    speicherZähler.textContent = speicher.length === 0 ? 0 : `${speicherIndex}/${speicher.length}`;
   }
 }
 
@@ -190,6 +192,21 @@ function speicherLeave() {
     buttonReturn.style.backgroundColor = "rgb(96, 150, 244)";
     speicherIndex = speicher.length;
     speicherZähler.textContent = speicher.length;
+
+    inputText.textContent = "";
+    inputText.style.backgroundColor = "rgb(96, 150, 244)";
+    buttonReturn.style.backgroundColor = "rgb(96, 150, 244)";
+    speicherPlus.hidden = false;
+    if (speicher.length === 0){
+      speicherCall.hidden = true;
+    } else {
+      speicherCall.hidden = false
+    };
+    speicherZurück.hidden = true;
+    speicherZähler.hidden = false;
+    speicherVor.hidden = true;
+    speicherEntfern.hidden = true;
+    speicherVerlassen.hidden = true;
   }
 }
 
@@ -277,6 +294,7 @@ async function musikSammlungErstellen() {
 //   inputText.textContent = "3 X TUSCH";
 //   displayText();
 // }
+
 buttonPrinz.addEventListener("touchend", displayPrinz);
 buttonPrinz.addEventListener("mousedown", displayPrinz);
 function displayPrinz() {
@@ -339,7 +357,6 @@ function endInput(e) {
   }
   //      check ob eine evtl. eingegebene Zahl zu einer Nummer eines MS passt - dann darf sie nicht in der folgenden Suchfunktion verwendet werden
   msFilterNummer = musikSammlung.filter((m) => String(m.nummer) === String(inputText.textContent));
-
   msFilterTitel = musikSammlung;
   if (msFilterNummer.length === 0) {
     msFilterTitel = musikSammlung.filter((m) => m.titel.toUpperCase().includes(inputText.textContent));
@@ -357,11 +374,23 @@ function endInput(e) {
     }
   }
   if (msFilterTitel.length > 1 && msFilterTitel !== musikSammlung) {
-    // buttonRechts.style.backgroundColor = "green";
-    // buttonLinks.style.backgroundColor = "red";
+    buttonRechts.style.backgroundColor = "green";
+    buttonRechts.style.display = "flex";
+    buttonSpace.style.display = "flex";
+    buttonLinks.style.backgroundColor = "green";
+    buttonLinks.style.display = "flex";
   } else if (msFilterTitel.length !== 1) {
+    buttonRechts.style.backgroundColor = "white";
+    buttonRechts.style.display = "flex";
     buttonSpace.textContent = " ";
     buttonSpace.style.display = "none";
+    buttonLinks.style.backgroundColor = "white";
+    buttonLinks.style.display = "flex";
+  } else if (msFilterTitel.length === 1){
+    buttonRechts.style.display = "none";
+    buttonSpace.textContent = " ";
+    buttonSpace.style.display = "none";
+    buttonLinks.style.display = "none";
   }
   // inputText.hidden = true;
   displayText();
@@ -376,37 +405,29 @@ function displayText() {
     buttonRechts.hidden = true;
     buttonSpace.hidden = true;
   }
-
   eingabeHide();
-
   containerGesamt.hidden = false;
   containerOben.hidden = false;
   containerTitel.hidden = false;
   containerTonart.hidden = false;
-
   containerUnten.hidden = false;
   outputText.hidden = false;
   outputTitel.hidden = false;
   outputTonart.hidden = false;
-
   outputTitel.textContent = "";
   outputTitel.style.color = "black";
   outputTitel.style.backgroundColor = "white";
   containerTitel.style.backgroundColor = "white";
-
   outputTonart.textContent = "";
   outputTonart.style.color = "black";
   outputTonart.style.backgroundColor = "white";
   containerTonart.style.backgroundColor = "white";
-
   outputText.textContent = "";
-
   inputText.textContent = String(inputText.textContent).trimEnd();
 
   for (m of musikSammlung) {
-    if (
-      String(m.nummer).toUpperCase() === String(inputText.textContent).toUpperCase()
-    ) {
+    if (String(m.nummer).toUpperCase() === String(inputText.textContent).toUpperCase()) 
+    {
       if (String(m.mappe).startsWith("gelb")) {
         containerTitel.style.backgroundColor = "yellow";
         outputTitel.style.backgroundColor = "yellow";
@@ -656,12 +677,17 @@ function eingabeShow() {
   buttonJungfrau.hidden = false;
   buttonProsit.hidden = false;
   buttonHappyBirthday.hidden = false;
-  // speicherPlus.hidden = false;
-  // speicherCall.hidden = false;
-  // speicherZurück.hidden = true;
-  // speicherZähler.hidden = true;
-  // speicherVor.hidden = true;
-  // speicherEntfern.hidden = true;
+  speicherPlus.hidden = false;
+  if (speicher.length === 0){
+    speicherCall.hidden = true;
+  } else {
+    speicherCall.hidden = false
+  };
+  speicherZurück.hidden = true;
+  speicherZähler.hidden = false;
+  speicherVor.hidden = true;
+  speicherEntfern.hidden = true;
+  speicherVerlassen.hidden = true;
   autoCheck.hidden = false;
   for (b of buttonABC) {
     b.hidden = false;
