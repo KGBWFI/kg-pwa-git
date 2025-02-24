@@ -36,6 +36,7 @@ const speicherZurück = document.getElementById("speicherZurück");
 const speicherZähler = document.getElementById("speicherZähler");
 const speicherVor = document.getElementById("speicherVor");
 const speicherEntfern = document.getElementById("speicherEntfern");
+const speicherVerlassen = document.getElementById("speicherVerlassen");
 
 function MusikStueck(id, nummer, titel, tonart, mappe) {
   this.id = id;
@@ -104,6 +105,10 @@ speicherVor.addEventListener("mousedown", speicherShowNext);
 speicherEntfern.addEventListener("oncllick", speicherRemove);
 speicherEntfern.addEventListener("mousedown", speicherRemove);
 
+speicherVerlassen.addEventListener("oncllick", speicherLeave);
+speicherVerlassen.addEventListener("mousedown", speicherLeave);
+
+
 
 
 function speicherPush() {
@@ -112,7 +117,7 @@ function speicherPush() {
     ++speicherIndex;
     speicherZähler.textContent = speicherIndex + "/" + speicher.length;
     inputText.style.backgroundColor = "orange";
-    buttonZurück.style.backgroundColor = "orange";
+    // buttonZurück.style.backgroundColor = "orange";
     // speicherCall.hidden = false;
   }
 }
@@ -128,7 +133,7 @@ function speicherShow() {
     // speicherZähler.hidden = false;
     // speicherVor.hidden = false;
     // speicherEntfern.hidden = false;
-    buttonZurück.style.backgroundColor = "orange";
+    // buttonZurück.style.backgroundColor = "orange";
   }
 }
 
@@ -149,7 +154,7 @@ function speicherShowNext() {
 }
 
 function speicherRemove() {
-  if (speicher.length > 0) {
+  if (speicher.length > 0 && inputText.style.backgroundColor === "orange") {
     inputText.style.backgroundColor = "orange";
     speicher.splice(speicherIndex - 1, 1);
     speicherIndex = speicher.length;
@@ -165,10 +170,18 @@ function speicherRemove() {
       // speicherZähler.hidden = true;
       // speicherVor.hidden = true;
       // speicherEntfern.hidden = true;
-      buttonZurück.style.backgroundColor = "lightgray"; 
+      // buttonZurück.style.backgroundColor = "lightgray"; 
       // speicherCall.hidden = true; 
     }
     speicherZähler.textContent = speicherIndex + "/" + speicher.length;
+  }
+}
+
+function speicherLeave() {
+  if (inputText.style.backgroundColor === "orange") {
+    inputText.textContent = "";
+    inputText.style.backgroundColor = "rgb(96, 150, 244)";
+    buttonReturn.style.backgroundColor = "rgb(96, 150, 244)";
   }
 }
 
@@ -181,15 +194,15 @@ function updateInput(e) {
     // }
     endInput();
   } else if (t === "⌫" && t != "") {
-    if (buttonZurück.style.backgroundColor === "orange"){
-      inputText.textContent = "";
-      buttonZurück.style.backgroundColor = "lightgray";
-    }
+    // if (buttonZurück.style.backgroundColor === "orange"){
+    //   inputText.textContent = "";
+    //   buttonZurück.style.backgroundColor = "lightgray";
+    // }
     const str = String(inputText.textContent);
     const strShorter = str.slice(0, str.length - 1);
     inputText.textContent = strShorter;
     if (inputText.textContent === "") {
-      inputText.style.backgroundColor = "rgb(96, 150, 244)";
+      // inputText.style.backgroundColor = "rgb(96, 150, 244)";
       buttonReturn.style.backgroundColor = "rgb(96, 150, 244)";
       // speicherPlus.hidden = false;
       // speicherCall.hidden = false;
