@@ -35,7 +35,7 @@ const speicherCall = document.getElementById("speicherCall");
 const speicherZurück = document.getElementById("speicherZurück");
 const speicherZähler = document.getElementById("speicherZähler");
 const speicherVor = document.getElementById("speicherVor");
-const speicherEntfern = document.getElementById("speicherEntfern");
+const speicherEntfernen = document.getElementById("speicherEntfernen");
 const speicherVerlassen = document.getElementById("speicherVerlassen");
 const speicherLeeren = document.getElementById("speicherLeeren");
 
@@ -103,8 +103,8 @@ speicherZurück.addEventListener("mousedown", speicherShowBefore);
 speicherVor.addEventListener("onclick", speicherShowNext);
 speicherVor.addEventListener("mousedown", speicherShowNext);
 
-speicherEntfern.addEventListener("onclick", speicherRemove);
-speicherEntfern.addEventListener("mousedown", speicherRemove);
+speicherEntfernen.addEventListener("onclick", speicherRemove);
+speicherEntfernen.addEventListener("mousedown", speicherRemove);
 
 speicherVerlassen.addEventListener("onclick", speicherLeave);
 speicherVerlassen.addEventListener("mousedown", speicherLeave);
@@ -132,36 +132,42 @@ function speicherPush() {
 
 
 function speicherShow() {
-  if (speicher.length > 0 && inputText.style.backgroundColor != "orange") {
+    if (inputText.style.backgroundColor != "orange"){
+      speicherIndex = speicher.length;
+    }
     inputText.textContent = speicher[speicherIndex - 1];
     inputText.style.backgroundColor = "orange";
     buttonReturn.style.backgroundColor = "red";
-    speicherIndex = speicher.length;
     speicherZähler.textContent = speicherIndex + "/" + speicher.length;
-    speicher.length > 1 ? speicherVor.hidden = false : speicherVor.hidden = true;
-    speicher.length > 1 ? speicherZurück.hidden = false : speicherZurück.hidden = true;
+    speicherZähler.hidden = false;
+    speicherVor.hidden = false; 
+    speicherZurück.hidden = false;
     speicherCall.hidden = true;
     speicherPlus.hidden = true;
-    speicherEntfern.hidden = false;
+    speicherEntfernen.hidden = false;
     speicherVerlassen.hidden = false;
-    speicher.length > 1 ? speicherLeeren.hidden = false : speicherLeeren.hidden = true;
-    // buttonZurück.style.backgroundColor = "orange";
-  }
+    speicherLeeren.hidden = false;
 }
 
 function speicherShowBefore() {
-  if (speicherIndex > 1 && inputText.style.backgroundColor === "orange") {
+  speicher[speicherIndex-1] = inputText.textContent;
+  if (speicherIndex > 1) {
     --speicherIndex;
     inputText.textContent = speicher[speicherIndex - 1];
     speicherZähler.textContent = speicherIndex + "/" + speicher.length;
+    // speicherIndex === speicher.length ? speicherVor.hidden = true : speicherVor.hidden = false;
+    // speicherIndex === 1 ? speicherZurück.hidden = true : speicherZurück.hidden = false;
   }
 }
 
 function speicherShowNext() {
-  if (speicherIndex < speicher.length && inputText.style.backgroundColor === "orange") {
+  speicher[speicherIndex-1] = inputText.textContent;
+  if (speicherIndex < speicher.length) {
     ++speicherIndex;
     inputText.textContent = speicher[speicherIndex - 1];
     speicherZähler.textContent = speicherIndex + "/" + speicher.length;
+    // speicherIndex === speicher.length ? speicherVor.hidden = true : speicherVor.hidden = false;
+    // speicherIndex === 1 ? speicherZurück.hidden = true : speicherZurück.hidden = false;
   }
 }
 
@@ -173,12 +179,8 @@ function speicherRemove() {
       if (speicher.length > 0) {
         inputText.textContent = speicher[speicherIndex - 1];
         speicherZähler.textContent = `${speicherIndex}/${speicher.length}`;
-        if (speicher.length === 1) {
-          speicherVor.hidden = true;
-          speicherZurück.hidden = true;
-          speicherLeeren.hidden = true;
-        }
       } else {
+        inputText.style.backgroundColor = "rgb(96, 150, 244)";
         startInput();
       };
     };
@@ -188,6 +190,7 @@ function speicherRemove() {
 }
 
 function speicherLeave() {
+  inputText.style.backgroundColor = "rgb(96, 150, 244)";
   startInput();
 }
 
@@ -197,6 +200,7 @@ function speicherClear() {
       speicher.pop();
       speicherIndex = speicher.length;
     }
+    inputText.style.backgroundColor = "rgb(96, 150, 244)";
     startInput()
   } else {
     return;
@@ -212,6 +216,8 @@ function updateInput(e) {
       buttonRechts.style.backgroundColor = "orange";
       buttonLinks.style.backgroundColor = "orange";
       buttonSpace.textContent = `${speicherIndex}/${speicher.length}`;
+    } else {
+      speicher[speicherIndex-1] = inputText.textContent;
     }
     endInput();
   } else if (t === "⌫" && t != "") {
@@ -520,6 +526,12 @@ function startInput() {
   outputText.style.color = "black";
 
   msFilterTitel = musikSammlung;
+
+  if (inputText.style.backgroundColor != "orange"){
+    inputText.style.backgroundColor = "rgb(96, 150, 244)";
+  } else {
+    speicherShow();
+  }
 }
 
 function nachRechts() {
@@ -641,9 +653,11 @@ function eingabeHide() {
 function eingabeShow() {
   containerEingabe.hidden = false;
   inputText.hidden = false;
-  inputText.style.backgroundColor = "rgb(96, 150, 244)";
-  speicherIndex = speicher.length;
-  speicherZähler.textContent = speicher.length === 0 ? "Speicher ist leer" :  speicher.length + " im Speicher";
+  // inputText.style.backgroundColor = "rgb(96, 150, 244)";
+  if (inputText.style.backgroundColor != "orange") {
+    speicherIndex = speicher.length;
+    speicherZähler.textContent = speicher.length === 0 ? "Speicher leer" : speicherZähler.hidden = true;
+  }
   containerFavoriten.hidden = false;
   // buttonEinfachTusch.hidden = false;
   // buttonDreifachTusch.hidden = false;
@@ -660,7 +674,7 @@ function eingabeShow() {
   };
   speicherZurück.hidden = true;
   speicherVor.hidden = true;
-  speicherEntfern.hidden = true;
+  speicherEntfernen.hidden = true;
   speicherVerlassen.hidden = true;
   speicherLeeren.hidden = true;
   autoCheck.hidden = false;
