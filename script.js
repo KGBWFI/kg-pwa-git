@@ -190,6 +190,7 @@ function speicherRemove() {
 }
 
 function speicherLeave() {
+  speicher[speicherIndex-1] = inputText.textContent;
   inputText.style.backgroundColor = "rgb(96, 150, 244)";
   startInput();
 }
@@ -211,12 +212,10 @@ function updateInput(e) {
   buttonReturn.style.backgroundColor = "red";
   const t = e.srcElement.textContent
   if (t === "⏎") {
-    if (inputText.style.backgroundColor != "orange") {
+    if (inputText.style.backgroundColor != "orange"){
       speicherPush();
-      buttonRechts.style.backgroundColor = "orange";
-      buttonLinks.style.backgroundColor = "orange";
-      buttonSpace.textContent = `${speicherIndex}/${speicher.length}`;
-    } else {
+    }
+    if (inputText.style.backgroundColor === "orange") {
       speicher[speicherIndex-1] = inputText.textContent;
     }
     endInput();
@@ -355,20 +354,28 @@ function endInput(e) {
       break;
     }
   }
-  if (msFilterTitel.length > 1 && msFilterTitel !== musikSammlung && buttonRechts.style.backgroundColor != "orange") {
+  if (msFilterTitel.length > 1 && msFilterTitel !== musikSammlung) {
     buttonRechts.style.backgroundColor = "green";
     buttonRechts.style.display = "flex";
     buttonSpace.style.display = "flex";
     buttonLinks.style.backgroundColor = "green";
-    buttonLinks.style.display = "flex";
-  } else if (msFilterTitel.length !== 1) {
-    buttonRechts.style.backgroundColor = "white";
-    buttonRechts.style.display = "flex";
-    buttonSpace.textContent = " ";
-    buttonSpace.style.display = "none";
-    buttonLinks.style.backgroundColor = "white";
-    buttonLinks.style.display = "flex";
-  } else if (msFilterTitel.length === 1) {
+    buttonLinks.style.display = "none";
+  } else if (speicher.length > 1) {
+    buttonRechts.style.backgroundColor = "orange";
+    if (speicherIndex === speicher.length){
+      buttonRechts.style.display = "none";
+    } else {
+      buttonRechts.style.display = "flex";
+    }
+    buttonSpace.textContent = `...Verlauf...`;
+    buttonSpace.style.display = "flex";
+    buttonLinks.style.backgroundColor = "orange";
+    if (speicherIndex === 1){
+      buttonLinks.style.display = "none";
+    } else {
+      buttonLinks.style.display = "flex";
+    }
+  } else {
     buttonRechts.style.display = "none";
     buttonSpace.textContent = " ";
     buttonSpace.style.display = "none";
@@ -383,11 +390,10 @@ function displayText() {
     ritterKuno.hidden = false;
     containerGesamt.hidden = true;
     containerUnten.hidden = true;
-    buttonLinks.hidden = true;
-    buttonRechts.hidden = true;
-    buttonSpace.hidden = true;
   }
+
   eingabeHide();
+
   containerGesamt.hidden = false;
   containerOben.hidden = false;
   containerTitel.hidden = false;
@@ -405,6 +411,7 @@ function displayText() {
   outputTonart.style.backgroundColor = "white";
   containerTonart.style.backgroundColor = "white";
   outputText.textContent = "";
+  
   inputText.textContent = String(inputText.textContent).trimEnd();
 
   for (m of musikSammlung) {
@@ -535,95 +542,119 @@ function startInput() {
 }
 
 function nachRechts() {
-  if (msFilterTitel.length === 1) {
-    msFilterTitel = musikSammlung;
-  }
-  // Verarbeiten einer Zahl, die nicht als Nummer eines MS vorkommt
-  if (
-    parseFloat(inputText.textContent) > 0 &&
-    parseFloat(inputText.textContent) < 1000 &&
-    musikSammlung.filter((e) => e.nummer === inputText.textContent).length === 0
-  ) {
-    msFilterTitel = musikSammlung;
-    let i = parseFloat(inputText.textContent);
-    while (i >= 0) {
-      const arrayTemp = musikSammlung.filter((e) => parseFloat(e.nummer) === i);
-      if (arrayTemp.length > 0) {
-        inputText.textContent = arrayTemp[0].nummer;
-        break;
-      }
-      i = i - 1;
-    }
-  }
-  let index = 0;
-  for (m of msFilterTitel) {
-    if (
-      String(inputText.textContent) === String(m.nummer) ||
-      String(inputText.textContent) === String(m.titel).toUpperCase()
-    ) {
-      // alert("! "+inputText.textContent);
-      index = msFilterTitel.indexOf(m);
-      // alert("index"+index);
-      // alert("msFiTiLength:"+msFilterTitel.length);
-      if (index < msFilterTitel.length - 1) {
-        inputText.textContent = msFilterTitel[index + 1].nummer;
-        // alert("msFiTi.index..index+1..index+2.nummer"+musikSammlung[index].nummer + "/"+musikSammlung[index+1].nummer + "/"+musikSammlung[index+2].nummer);
-      }
-      if (msFilterTitel[index + 1].nummer === "Anhang") {
-        inputText.textContent = msFilterTitel[index + 1].titel.toUpperCase();
+  if (buttonRechts.style.backgroundColor === "orange") {
+    if (speicherIndex < speicher.length) {
+      ++speicherIndex;
+      inputText.textContent = speicher[speicherIndex - 1];
+      if (speicherIndex > 1){
+        buttonLinks.style.display = "flex";
+      };
+      if (speicherIndex === speicher.length){
+        buttonRechts.style.display = "none";
       }
       displayText();
-      break;
+    }
+  } else {
+    if (
+      parseFloat(inputText.textContent) > 0 &&
+      parseFloat(inputText.textContent) < 1000 &&
+      musikSammlung.filter((e) => e.nummer === inputText.textContent).length === 0
+    ) {
+      msFilterTitel = musikSammlung;
+      let i = parseFloat(inputText.textContent);
+      while (i >= 0) {
+        const arrayTemp = musikSammlung.filter((e) => parseFloat(e.nummer) === i);
+        if (arrayTemp.length > 0) {
+          inputText.textContent = arrayTemp[0].nummer;
+          break;
+        }
+        i = i - 1;
+      }
+    }
+    let index = 0;
+    for (m of msFilterTitel) {
+      if (
+        String(inputText.textContent) === String(m.nummer) ||
+        String(inputText.textContent) === String(m.titel).toUpperCase()
+      ) {
+        index = msFilterTitel.indexOf(m);
+        if (index < msFilterTitel.length - 1) {
+          inputText.textContent = msFilterTitel[index + 1].nummer;
+        }
+        if (msFilterTitel[index + 1].nummer === "Anhang") {
+          inputText.textContent = msFilterTitel[index + 1].titel.toUpperCase();
+        }
+        if (index + 1 === msFilterTitel.length - 1){
+          buttonRechts.style.display = "none";
+        }
+        if (index + 1 > 0){
+          buttonLinks.style.display = "flex";
+        }
+        displayText();
+        break;
+      }
     }
   }
-  // if (buttonRechts.style.backgroundColor !== "green") {
-  //   buttonSpace.textContent = " ";
-  //   buttonSpace.style.display = "none";
-  // }
 }
 
 function nachLinks() {
-  if (msFilterTitel.length === 1) {
-    msFilterTitel = musikSammlung;
-  }
-  if (
-    parseFloat(inputText.textContent) > 0 &&
-    parseFloat(inputText.textContent) < 1000 &&
-    musikSammlung.filter((e) => e.nummer === inputText.textContent).length === 0
-  ) {
-    msFilterTitel = musikSammlung;
-    let i = parseFloat(inputText.textContent);
-    while (i <= musikSammlung[musikSammlung.length - 1].nummer) {
-      const arrayTemp = musikSammlung.filter((e) => parseFloat(e.nummer) === i);
-      if (arrayTemp.length > 0) {
-        inputText.textContent = arrayTemp[0].nummer;
-        break;
-      }
-      i = i + 1;
-    }
-  }
-
-  let index = 0;
-  for (m of msFilterTitel) {
-    if (
-      inputText.textContent === String(m.nummer) ||
-      inputText.textContent === String(m.titel).toUpperCase()
-    ) {
-      index = msFilterTitel.indexOf(m);
-      if (index > 0) {
-        inputText.textContent = msFilterTitel[index - 1].nummer;
-      }
-      if (msFilterTitel[index - 1].nummer === "Anhang") {
-        inputText.textContent = msFilterTitel[index - 1].titel.toUpperCase();
+  if (buttonLinks.style.backgroundColor === "orange") {
+    if (speicherIndex > 1) {
+      --speicherIndex;
+      inputText.textContent = speicher[speicherIndex - 1];
+      if (speicherIndex === 1){
+        buttonLinks.style.display = "none";
+      };
+      if (speicherIndex < speicher.length){
+        buttonRechts.style.display = "flex";
       }
       displayText();
-      break;
+    }
+  } else {
+    if (msFilterTitel.length === 1) {
+      msFilterTitel = musikSammlung;
+    }
+    if (
+      parseFloat(inputText.textContent) > 0 &&
+      parseFloat(inputText.textContent) < 1000 &&
+      musikSammlung.filter((e) => e.nummer === inputText.textContent).length === 0
+    ) {
+      msFilterTitel = musikSammlung;
+      let i = parseFloat(inputText.textContent);
+      while (i <= musikSammlung[musikSammlung.length - 1].nummer) {
+        const arrayTemp = musikSammlung.filter((e) => parseFloat(e.nummer) === i);
+        if (arrayTemp.length > 0) {
+          inputText.textContent = arrayTemp[0].nummer;
+          break;
+        }
+        i = i + 1;
+      }
+    }
+
+    let index = 0;
+    for (m of msFilterTitel) {
+      if (
+        inputText.textContent === String(m.nummer) ||
+        inputText.textContent === String(m.titel).toUpperCase()
+      ) {
+        index = msFilterTitel.indexOf(m);
+        if (index > 0) {
+          inputText.textContent = msFilterTitel[index - 1].nummer;
+        }
+        if (msFilterTitel[index - 1].nummer === "Anhang") {
+          inputText.textContent = msFilterTitel[index - 1].titel.toUpperCase();
+        }
+        if (index - 1 < msFilterTitel.length - 1){
+          buttonRechts.style.display = "flex";
+        }
+        if (index - 1 === 0){
+          buttonLinks.style.display = "none";
+        }
+        displayText();
+        break;
+      }
     }
   }
-  // if (buttonLinks.style.backgroundColor !== "red") {
-  //   buttonSpace.textContent = " ";
-  //   buttonSpace.style.display = "none";
-  // }
 }
 
 function eingabeHide() {
@@ -656,7 +687,7 @@ function eingabeShow() {
   // inputText.style.backgroundColor = "rgb(96, 150, 244)";
   if (inputText.style.backgroundColor != "orange") {
     speicherIndex = speicher.length;
-    speicherZähler.textContent = speicher.length === 0 ? "Speicher leer" : speicherZähler.hidden = true;
+    speicherZähler.textContent = speicher.length === 0 ? "Verlauf leer" : speicherZähler.hidden = true;
   }
   containerFavoriten.hidden = false;
   // buttonEinfachTusch.hidden = false;
