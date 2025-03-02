@@ -8,6 +8,7 @@ const containerTonart = document.getElementById("containerTonart");
 const outputTonart = document.getElementById("outputTonart");
 const containerUnten = document.getElementById("containerUnten");
 const outputText = document.getElementById("outputText");
+const containerButtons = document.getElementById("containerButtons");
 const buttonLinks = document.getElementById("buttonLinks");
 const buttonRechts = document.getElementById("buttonRechts");
 const buttonSpace = document.getElementById("buttonSpace");
@@ -30,6 +31,7 @@ const buttonReturn = document.getElementById("return");
 const leerzeile = document.getElementById("leerzeile");
 const speicher = [];
 let speicherIndex = 0;
+const speicherLetzteAnzeige =document.getElementById("speicherLetzteAnzeige");
 const speicherPlus = document.getElementById("speicherPlus");
 const speicherCall = document.getElementById("speicherCall");
 const speicherZurück = document.getElementById("speicherZurück");
@@ -91,6 +93,9 @@ ritterKuno.addEventListener("mousedown", startInput);
 autoCheck.addEventListener("onclick", automatikEinaus);
 autoCheck.addEventListener("mousedown", automatikEinaus);
 
+speicherLetzteAnzeige.addEventListener("onclick", speicherLast);
+speicherLetzteAnzeige.addEventListener("mousedown", speicherLast);
+
 speicherPlus.addEventListener("onclick", speicherPush);
 speicherPlus.addEventListener("mousedown", speicherPush);
 
@@ -114,43 +119,47 @@ speicherLeeren.addEventListener("mousedown", speicherClear);
 
 
 
+function speicherLast() {
+  inputText.textContent = speicher[speicherIndex-1];
+  endInput();
+}
 
 function speicherPush() {
   if (inputText.textContent != "" && inputText.style.backgroundColor != "orange") {
     speicher.push(inputText.textContent);
     ++speicherIndex;
-    speicherZähler.textContent = speicher.length + " im Speicher";
+    // speicherZähler.textContent = speicher.length + " im Speicher";
     // inputText.style.backgroundColor = "orange";
     // buttonZurück.style.backgroundColor = "orange";
     speicherCall.hidden = false;
   }
   if (inputText.textContent != "" && inputText.style.backgroundColor === "orange") {
     speicher[speicherIndex - 1] = inputText.textContent;
-    alert("Speicherplatz " + speicherIndex + " geändert");
   }
 }
 
 
 function speicherShow() {
-    if (inputText.style.backgroundColor != "orange"){
-      speicherIndex = speicher.length;
-    }
-    inputText.textContent = speicher[speicherIndex - 1];
-    inputText.style.backgroundColor = "orange";
-    buttonReturn.style.backgroundColor = "red";
-    speicherZähler.textContent = speicherIndex + "/" + speicher.length;
-    speicherZähler.hidden = false;
-    speicherVor.hidden = false; 
-    speicherZurück.hidden = false;
-    speicherCall.hidden = true;
-    speicherPlus.hidden = true;
-    speicherEntfernen.hidden = false;
-    speicherVerlassen.hidden = false;
-    speicherLeeren.hidden = false;
+  if (inputText.style.backgroundColor != "orange") {
+    speicherIndex = speicher.length;
+  }
+  inputText.textContent = speicher[speicherIndex - 1];
+  inputText.style.backgroundColor = "orange";
+  buttonReturn.style.backgroundColor = "red";
+  speicherZähler.textContent = speicherIndex + "/" + speicher.length;
+  speicherLetzteAnzeige.style.display = "none";
+  speicherZähler.hidden = false;
+  speicherVor.hidden = false;
+  speicherZurück.hidden = false;
+  speicherCall.hidden = true;
+  speicherPlus.hidden = true;
+  speicherEntfernen.hidden = false;
+  speicherVerlassen.hidden = false;
+  speicherLeeren.hidden = false;
 }
 
 function speicherShowBefore() {
-  speicher[speicherIndex-1] = inputText.textContent;
+  speicher[speicherIndex - 1] = inputText.textContent;
   if (speicherIndex > 1) {
     --speicherIndex;
     inputText.textContent = speicher[speicherIndex - 1];
@@ -161,7 +170,7 @@ function speicherShowBefore() {
 }
 
 function speicherShowNext() {
-  speicher[speicherIndex-1] = inputText.textContent;
+  speicher[speicherIndex - 1] = inputText.textContent;
   if (speicherIndex < speicher.length) {
     ++speicherIndex;
     inputText.textContent = speicher[speicherIndex - 1];
@@ -190,7 +199,7 @@ function speicherRemove() {
 }
 
 function speicherLeave() {
-  speicher[speicherIndex-1] = inputText.textContent;
+  speicher[speicherIndex - 1] = inputText.textContent;
   inputText.style.backgroundColor = "rgb(96, 150, 244)";
   startInput();
 }
@@ -212,11 +221,11 @@ function updateInput(e) {
   buttonReturn.style.backgroundColor = "red";
   const t = e.srcElement.textContent
   if (t === "⏎") {
-    if (inputText.style.backgroundColor != "orange"){
+    if (inputText.style.backgroundColor != "orange") {
       speicherPush();
     }
     if (inputText.style.backgroundColor === "orange") {
-      speicher[speicherIndex-1] = inputText.textContent;
+      speicher[speicherIndex - 1] = inputText.textContent;
     }
     endInput();
   } else if (t === "⌫" && t != "") {
@@ -280,31 +289,41 @@ buttonPrinz.addEventListener("touchend", displayPrinz);
 buttonPrinz.addEventListener("mousedown", displayPrinz);
 function displayPrinz() {
   inputText.textContent = "3";
-  displayText();
+  speicher.push(inputText.textContent);
+  ++speicherIndex;
+  endInput();
 }
 buttonBauer.addEventListener("touchend", displayBauer);
 buttonBauer.addEventListener("mousedown", displayBauer);
 function displayBauer() {
   inputText.textContent = "68";
-  displayText();
+  speicher.push(inputText.textContent);
+  ++speicherIndex;
+  endInput();
 }
 buttonJungfrau.addEventListener("touchend", displayJungfrau);
 buttonJungfrau.addEventListener("mousedown", displayJungfrau);
 function displayJungfrau() {
   inputText.textContent = "33";
-  displayText();
+  speicher.push(inputText.textContent);
+  ++speicherIndex;
+  endInput();
 }
 buttonProsit.addEventListener("touchend", displayProsit);
 buttonProsit.addEventListener("mousedown", displayProsit);
 function displayProsit() {
   inputText.textContent = "15";
-  displayText();
+  speicher.push(inputText.textContent);
+  ++speicherIndex;
+  endInput();
 }
 buttonHappyBirthday.addEventListener("touchend", displayHappyBirthday);
 buttonHappyBirthday.addEventListener("mousedown", displayHappyBirthday);
 function displayHappyBirthday() {
   inputText.textContent = "Happy Birthday in As";
-  displayText();
+  speicher.push(inputText.textContent);
+  ++speicherIndex;
+  endInput();
 }
 
 function endInput(e) {
@@ -314,28 +333,28 @@ function endInput(e) {
   if (inputText.textContent === "") {
     inputText.textContent = "KUNO";
   }
-  if (inputText.textContent === "T") {
-    inputText.textContent = "1 x TUSCH";
-  }
-  if (String(inputText.textContent).startsWith("TT")) {
-    inputText.textContent = "3 x TUSCH";
-  }
-  if (inputText.textContent === "H") {
-    inputText.textContent = "Happy Birthday in As";
-  }
-  if (inputText.textContent === "P") {
-    inputText.textContent = "3";
-  }
-  if (inputText.textContent === "B") {
-    inputText.textContent = "68";
-  }
-  if (inputText.textContent === "J") {
-    inputText.textContent = "33";
-  }
-  if (inputText.textContent === "K") {
-    inputText.textContent = "KUNO";
-    ritterKuno.hidden = false;
-  }
+  // if (inputText.textContent === "T") {
+  //   inputText.textContent = "1 x TUSCH";
+  // }
+  // if (String(inputText.textContent).startsWith("TT")) {
+  //   inputText.textContent = "3 x TUSCH";
+  // }
+  // if (inputText.textContent === "H") {
+  //   inputText.textContent = "Happy Birthday in As";
+  // }
+  // if (inputText.textContent === "P") {
+  //   inputText.textContent = "3";
+  // }
+  // if (inputText.textContent === "B") {
+  //   inputText.textContent = "68";
+  // }
+  // if (inputText.textContent === "J") {
+  //   inputText.textContent = "33";
+  // }
+  // if (inputText.textContent === "K") {
+  //   inputText.textContent = "KUNO";
+  //   ritterKuno.hidden = false;
+  // }
   //      check ob eine evtl. eingegebene Zahl zu einer Nummer eines MS passt - dann darf sie nicht in der folgenden Suchfunktion verwendet werden
   msFilterNummer = musikSammlung.filter((m) => String(m.nummer) === String(inputText.textContent));
   msFilterTitel = musikSammlung;
@@ -356,40 +375,58 @@ function endInput(e) {
   }
   if (msFilterTitel.length > 1 && msFilterTitel !== musikSammlung) {
     buttonRechts.style.backgroundColor = "green";
-    buttonRechts.style.display = "flex";
+    buttonRechts.textContent = "▶️";
+    // buttonRechts.style.display = "flex";
     buttonSpace.style.display = "flex";
     buttonLinks.style.backgroundColor = "green";
-    buttonLinks.style.display = "none";
+    // buttonLinks.style.display = "none";
+    buttonLinks.textContent = "";
+    buttonLinks.style.background = "transparent";
   } else if (speicher.length > 1) {
     buttonRechts.style.backgroundColor = "orange";
-    if (speicherIndex === speicher.length){
-      buttonRechts.style.display = "none";
+    if (speicherIndex === speicher.length) {
+      // buttonRechts.style.display = "none";
+      buttonRechts.textContent = "";
+      buttonRechts.style.background = "transparent"
     } else {
-      buttonRechts.style.display = "flex";
+      // buttonRechts.style.display = "flex";
+      buttonRechts.textContent = "▶️";
+      buttonRechts.style.backgroundColor = "orange";
     }
-    buttonSpace.textContent = `...Verlauf...`;
     buttonSpace.style.display = "flex";
+    buttonSpace.textContent = `Verlauf ${speicherIndex}/${speicher.length}`;
     buttonLinks.style.backgroundColor = "orange";
-    if (speicherIndex === 1){
-      buttonLinks.style.display = "none";
+    if (speicherIndex === 1) {
+      // buttonLinks.style.display = "none";
+      buttonLinks.textContent = "";
+      buttonLinks.style.backgroundColor = "transparent";
     } else {
-      buttonLinks.style.display = "flex";
+      // buttonLinks.style.display = "flex";
+      buttonLinks.textContent = "◀️";
+      buttonLinks.style.backgroundColor = "orange";
     }
   } else {
-    buttonRechts.style.display = "none";
-    buttonSpace.textContent = " ";
-    buttonSpace.style.display = "none";
-    buttonLinks.style.display = "none";
+    // buttonRechts.style.display = "none";
+    buttonRechts.textContent = "";
+    buttonRechts.style.background = "transparent"
+    buttonSpace.textContent = "";
+    buttonSpace.style.display = "flex";
+    // buttonLinks.style.display = "none";
+    buttonLinks.textContent = "";
+    buttonLinks.style.background = "transparent"
+
   }
-  // inputText.hidden = true;
   displayText();
 }
 
 function displayText() {
+  speicher[speicherIndex - 1] = inputText.textContent;
   if (inputText.textContent === "KUNO") {
     ritterKuno.hidden = false;
     containerGesamt.hidden = true;
     containerUnten.hidden = true;
+    containerButtons.display = "none";
+    return;
   }
 
   eingabeHide();
@@ -411,7 +448,7 @@ function displayText() {
   outputTonart.style.backgroundColor = "white";
   containerTonart.style.backgroundColor = "white";
   outputText.textContent = "";
-  
+
   inputText.textContent = String(inputText.textContent).trimEnd();
 
   for (m of musikSammlung) {
@@ -534,7 +571,7 @@ function startInput() {
 
   msFilterTitel = musikSammlung;
 
-  if (inputText.style.backgroundColor != "orange"){
+  if (inputText.style.backgroundColor != "orange") {
     inputText.style.backgroundColor = "rgb(96, 150, 244)";
   } else {
     speicherShow();
@@ -545,12 +582,17 @@ function nachRechts() {
   if (buttonRechts.style.backgroundColor === "orange") {
     if (speicherIndex < speicher.length) {
       ++speicherIndex;
+      buttonSpace.textContent = `Verlauf ${speicherIndex}/${speicher.length}`;
       inputText.textContent = speicher[speicherIndex - 1];
-      if (speicherIndex > 1){
-        buttonLinks.style.display = "flex";
+      if (speicherIndex > 1) {
+        // buttonLinks.style.display = "flex";
+        buttonLinks.textContent = "◀️";
+        buttonLinks.style.backgroundColor = "orange";
       };
-      if (speicherIndex === speicher.length){
-        buttonRechts.style.display = "none";
+      if (speicherIndex === speicher.length) {
+        // buttonRechts.style.display = "none";
+        buttonRechts.textContent = "";
+        buttonRechts.style.backgroundColor = "transparent";
       }
       displayText();
     }
@@ -584,11 +626,15 @@ function nachRechts() {
         if (msFilterTitel[index + 1].nummer === "Anhang") {
           inputText.textContent = msFilterTitel[index + 1].titel.toUpperCase();
         }
-        if (index + 1 === msFilterTitel.length - 1){
-          buttonRechts.style.display = "none";
+        if (index + 1 === msFilterTitel.length - 1) {
+          // buttonRechts.style.display = "none";
+          buttonRechts.textContent = "";
+          buttonRechts.style.backgroundColor = "transparent";
         }
-        if (index + 1 > 0){
-          buttonLinks.style.display = "flex";
+        if (index + 1 > 0) {
+          // buttonLinks.style.display = "flex";
+          buttonLinks.textContent = "◀️";
+          buttonLinks.style.backgroundColor = "green";
         }
         displayText();
         break;
@@ -602,11 +648,16 @@ function nachLinks() {
     if (speicherIndex > 1) {
       --speicherIndex;
       inputText.textContent = speicher[speicherIndex - 1];
-      if (speicherIndex === 1){
-        buttonLinks.style.display = "none";
+      buttonSpace.textContent = `Verlauf ${speicherIndex}/${speicher.length}`;
+      if (speicherIndex === 1) {
+        // buttonLinks.style.display = "none";
+        buttonLinks.textContent = "";
+        buttonLinks.style.backgroundColor = "transparent";
       };
-      if (speicherIndex < speicher.length){
-        buttonRechts.style.display = "flex";
+      if (speicherIndex < speicher.length) {
+        // buttonRechts.style.display = "flex";
+        buttonRechts.textContent = "▶️";
+        buttonRechts.style.backgroundColor = "orange";
       }
       displayText();
     }
@@ -630,7 +681,6 @@ function nachLinks() {
         i = i + 1;
       }
     }
-
     let index = 0;
     for (m of msFilterTitel) {
       if (
@@ -644,11 +694,15 @@ function nachLinks() {
         if (msFilterTitel[index - 1].nummer === "Anhang") {
           inputText.textContent = msFilterTitel[index - 1].titel.toUpperCase();
         }
-        if (index - 1 < msFilterTitel.length - 1){
-          buttonRechts.style.display = "flex";
+        if (index - 1 < msFilterTitel.length - 1) {
+          // buttonRechts.style.display = "flex";
+          buttonRechts.textContent = "▶️";
+          buttonRechts.style.backgroundColor = "green";
         }
-        if (index - 1 === 0){
-          buttonLinks.style.display = "none";
+        if (index - 1 === 0) {
+          // buttonLinks.style.display = "none";
+          buttonLinks.textContent = "";
+          buttonLinks.style.backgroundColor = "transparent";
         }
         displayText();
         break;
@@ -697,6 +751,7 @@ function eingabeShow() {
   buttonJungfrau.hidden = false;
   buttonProsit.hidden = false;
   buttonHappyBirthday.hidden = false;
+  speicherLetzteAnzeige.style.display = "flex";
   speicherPlus.style.display = "none";
   if (speicher.length === 0) {
     speicherCall.hidden = true;
