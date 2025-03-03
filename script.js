@@ -364,6 +364,7 @@ function endInput(e) {
     buttonSpace.style.display = "flex";
     for (m of msFilterTitel) {
       inputText.textContent = m.nummer;
+      speicher[speicherIndex-1] = inputText.textContent;
       if (m.nummer === "Anhang") {
         inputText.textContent = m.titel.toUpperCase();
       }
@@ -425,7 +426,7 @@ function displayText() {
     ritterKuno.hidden = false;
     containerGesamt.hidden = true;
     containerUnten.hidden = true;
-    containerButtons.display = "none";
+    // containerButtons.display = "none";
     return;
   }
 
@@ -742,6 +743,7 @@ function eingabeShow() {
   if (inputText.style.backgroundColor != "orange") {
     speicherIndex = speicher.length;
     speicherZähler.textContent = speicher.length === 0 ? "Verlauf leer" : speicherZähler.hidden = true;
+    speicherLetzteAnzeige.style.display = speicher.length === 0 ? "none" : "flex";
   }
   containerFavoriten.hidden = false;
   // buttonEinfachTusch.hidden = false;
@@ -755,8 +757,10 @@ function eingabeShow() {
   speicherPlus.style.display = "none";
   if (speicher.length === 0) {
     speicherCall.hidden = true;
+    speicherLetzteAnzeige.style.display = "none";
   } else {
-    speicherCall.hidden = false
+    speicherCall.hidden = false;
+    speicherLetzteAnzeige.style.display = "flex";
   };
   speicherZurück.hidden = true;
   speicherVor.hidden = true;
