@@ -358,6 +358,7 @@ function endInput(e) {
   //      check ob eine evtl. eingegebene Zahl zu einer Nummer eines MS passt - dann darf sie nicht in der folgenden Suchfunktion verwendet werden
   msFilterNummer = musikSammlung.filter((m) => String(m.nummer) === String(inputText.textContent));
   msFilterTitel = musikSammlung;
+  
   if (msFilterNummer.length === 0) {
     msFilterTitel = musikSammlung.filter((m) => m.titel.toUpperCase().includes(inputText.textContent));
     buttonSpace.textContent = "..." + inputText.textContent + "...";
