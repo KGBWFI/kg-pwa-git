@@ -221,7 +221,7 @@ function updateInput(e) {
   buttonReturn.style.backgroundColor = "red";
   const t = e.srcElement.textContent
   if (t === "⏎") {
-    if (inputText.style.backgroundColor != "orange") {
+    if (inputText.style.backgroundColor != "orange" && inputText.textContent != "") {
       speicherPush();
     }
     if (inputText.style.backgroundColor === "orange") {
@@ -421,7 +421,9 @@ function endInput(e) {
 }
 
 function displayText() {
-  speicher[speicherIndex - 1] = inputText.textContent;
+  if (inputText.textContent != "KUNO"){
+    speicher[speicherIndex - 1] = inputText.textContent;
+  }
   if (inputText.textContent === "KUNO") {
     ritterKuno.hidden = false;
     containerGesamt.hidden = true;
@@ -597,7 +599,7 @@ function nachRechts() {
       }
       displayText();
     }
-  } else {
+  } else if (buttonRechts.style.backgroundColor === "green"){
     if (
       parseFloat(inputText.textContent) > 0 &&
       parseFloat(inputText.textContent) < 1000 &&
@@ -662,7 +664,7 @@ function nachLinks() {
       }
       displayText();
     }
-  } else {
+  } else if (buttonLinks.style.backgroundColor === "green"){
     if (msFilterTitel.length === 1) {
       msFilterTitel = musikSammlung;
     }
