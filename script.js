@@ -748,7 +748,8 @@ function eingabeShow() {
     speicherZähler.textContent = speicher.length === 0 ? "Verlauf leer" : speicherZähler.hidden = true;
     speicherLetzteAnzeige.style.display = speicher.length === 0 ? "none" : "flex";
   }
-  containerFavoriten.hidden = false;
+  containerFavoriten.style.display = "none";
+  // containerFavoriten.hidden = false;
   // buttonEinfachTusch.hidden = false;
   // buttonDreifachTusch.hidden = false;
   buttonPrinz.hidden = false;
