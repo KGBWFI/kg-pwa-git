@@ -12,39 +12,53 @@
 
 <body>
     <img src="Ritter_Kuno.jpeg" id="ritterKuno" class="ritterKuno" title="KG Blau-Weiß Fischenich">
-    
+
     <div id="containerEingabe" class="containerEingabe">
-        <div id="containerMusikauswahl" class="containerMusikauswahl">
-            <div id="Karneval" class="MusikauswahlButton">Karneval</div>
-            <div id="U-Musik" class="MusikauswahlButton">U-Musik</div>
-            <div id="Marschheft" class="MusikauswahlButton">Marschheft</div>
-        </div>
         <textarea id="inputText" class="inputText"></textarea>
-        <div id="conainerSpeicher" class="containerSpeicher">
-            <!-- <div id="speicherLabel" class="SpeicherButton">SPEICHER</div> -->
-            <div id="speicherLetzteAnzeige" class="SpeicherButton">letzte Anzeige</div>
-            <div id="speicherPlus" class="SpeicherButton">💾 ändern</div>
-            <div id="speicherCall" class="SpeicherButton">Verlaufsmenü öffnen</div>
-            <div id="speicherZurück" class="SpeicherButton">⏪</div>
-            <div id="speicherZähler" class="SpeicherButton">0/0</div>
-            <div id="speicherVor" class="SpeicherButton">⏩</div>
-            <!-- <div id="löschenLabel" class="SpeicherButton">löschen:</div> -->
-            <div id="speicherEntfernen" class="SpeicherButton"> 1x löschen</div>
-            <div id="speicherLeeren" class="SpeicherButton">ALLES löschen</div>
-            <div id="speicherVerlassen" class="SpeicherButton">EXIT</div>
-        </div>
+
         <div id="containerFavoriten" class="containerFavoriten">
             <!-- <div id="EinfachTusch" class="FavoritButton">  1x Tusch  </div> -->
             <!-- <div id="DreifachTusch" class="FavoritButton">  3x Tusch  </div> -->
-            <div id="Prinz" class="FavoritButton">  Prinz  </div>
-            <div id="Bauer" class="FavoritButton">  Bauer  </div>
-            <div id="Jungfrau" class="FavoritButton">  Jungfrau  </div>
-            <div id="Prosit" class="FavoritButton">  Prosit  </div>
-            <div id="HappyBirthday" class="FavoritButton">  Happy Birthday  </div>
+            <div id="Prinz" class="FavoritButton"> Prinz </div>
+            <div id="Bauer" class="FavoritButton"> Bauer </div>
+            <div id="Jungfrau" class="FavoritButton"> Jungfrau </div>
+            <div id="Prosit" class="FavoritButton"> Prosit </div>
+            <div id="HappyBirthday" class="FavoritButton"> Happy Birthday </div>
         </div>
-        <div id="containerAutomatik" class="containerAutomatik">
-            <div id="AutomatikButton" class="AutomatikButton">Automatik ist an</div>
+
+        <div id="containerOptionen" class="containerOptionen">
+
+            <div id="containerSpeicherAutomatik" class="containerSpeicherAutomatik">
+
+                <div id="containerSpeicher" class="containerSpeicher">
+                    <!-- <div id="speicherLabel" class="SpeicherButton">SPEICHER</div> -->
+                    <div id="speicherLetzteAnzeige" class="SpeicherButton">letzte Anzeige</div>
+                    <div id="speicherPlus" class="SpeicherButton">💾 ändern</div>
+                    <div id="speicherCall" class="SpeicherButton">Verlaufsmenü öffnen</div>
+                    <div id="speicherZurück" class="SpeicherButton">⏪</div>
+                    <div id="speicherZähler" class="SpeicherButton">0/0</div>
+                    <div id="speicherVor" class="SpeicherButton">⏩</div>
+                    <!-- <div id="löschenLabel" class="SpeicherButton">löschen:</div> -->
+                    <div id="speicherEntfernen" class="SpeicherButton"> 1x löschen</div>
+                    <div id="speicherLeeren" class="SpeicherButton">ALLES löschen</div>
+                    <div id="speicherVerlassen" class="SpeicherButton">EXIT</div>
+                </div>
+
+                <div id="containerAutomatik" class="containerAutomatik">
+                    <div id="AutomatikButton" class="AutomatikButton">Automatik ist an</div>
+                </div>
+            </div>
+
+            <div id="containerMusikauswahl" class="containerMusikauswahl">
+                <div id="Karneval" class="MusikauswahlButton">Karneval</div>
+                <div id="U-Musik" class="MusikauswahlButton">U-Musik</div>
+                <div id="Marschheft" class="MusikauswahlButton">Marschheft</div>
+            </div>
+
         </div>
+
+
+        <!-- </div> -->
         <div id="tastatur" class="tastatur">
             <div id="tastaturABC" class="tastaturABC">
                 <div id="reihe0ABC" class="reiheABC">
@@ -111,7 +125,7 @@
                     <button id="zwei" class="zahl">2</button>
                     <button id="drei" class="zahl">3</button>
                 </div>
-                <div id="reihe2Zahl" class="reiheZahl">    
+                <div id="reihe2Zahl" class="reiheZahl">
                     <button id="vier" class="zahl">4</button>
                     <button id="fünf" class="zahl">5</button>
                     <button id="sechs" class="zahl">6</button>
@@ -129,6 +143,7 @@
             </div>
         </div>
     </div>
+    </div>
     <div id="containerGesamt" class="containerGesamt">
         <div id="containerOben" class="containerOben">
             <div id="containerTitel" class="containerTitel">
@@ -143,8 +158,8 @@
         </div>
         <div id="containerButtons" class="containerButtons">
             <button id="buttonLinks" class="buttonLinks">◀️</buttton>
-            <button id="buttonSpace" class="buttonSpace"></button>
-            <button id="buttonRechts" class="buttonRechts">▶️</button>
+                <button id="buttonSpace" class="buttonSpace"></button>
+                <button id="buttonRechts" class="buttonRechts">▶️</button>
         </div>
     </div>
     <script src="script.js"></script>

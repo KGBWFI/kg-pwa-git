@@ -745,7 +745,7 @@ function eingabeShow() {
   // inputText.style.backgroundColor = "rgb(96, 150, 244)";
   if (inputText.style.backgroundColor != "orange") {
     speicherIndex = speicher.length;
-    speicherZähler.textContent = speicher.length === 0 ? "Verlauf leer" : speicherZähler.hidden = true;
+    speicherZähler.textContent = speicher.length === 0 ? "Verlauf ist leer" : speicherZähler.hidden = true;
     speicherLetzteAnzeige.style.display = speicher.length === 0 ? "none" : "flex";
   }
   containerFavoriten.style.display = "none";
