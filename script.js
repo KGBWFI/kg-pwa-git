@@ -40,6 +40,9 @@ const speicherVor = document.getElementById("speicherVor");
 const speicherEntfernen = document.getElementById("speicherEntfernen");
 const speicherVerlassen = document.getElementById("speicherVerlassen");
 const speicherLeeren = document.getElementById("speicherLeeren");
+const karneval = document.getElementById("Karneval");
+const umusik = document.getElementById("UMusik");
+const marschheft = document.getElementById("Marschheft");
 
 function MusikStueck(id, nummer, titel, tonart, mappe) {
   this.id = id;
@@ -53,6 +56,7 @@ let musikSammlung = [MusikStueck];
 let msFilterNummer = [MusikStueck];
 let msFilterTitel = [MusikStueck];
 let msGeladen = [MusikStueck];
+let musikstueckequelle = "Karneval";
 
 // inputText.addEventListener("keydown", endInput);
 
@@ -116,6 +120,15 @@ speicherVerlassen.addEventListener("mousedown", speicherLeave);
 
 speicherLeeren.addEventListener("onclick", speicherClear);
 speicherLeeren.addEventListener("mousedown", speicherClear);
+
+karneval.addEventListener("onclick", musikQuelleWaehlen);
+karneval.addEventListener("mousedown", musikQuelleWaehlen);
+
+umusik.addEventListener("onclick", musikQuelleWaehlen);
+umusik.addEventListener("mousedown", musikQuelleWaehlen);
+
+marschheft.addEventListener("onclick", musikQuelleWaehlen);
+marschheft.addEventListener("mousedown", musikQuelleWaehlen);
 
 
 
@@ -258,6 +271,31 @@ function automatikEinaus(e) {
   }
 };
 
+function musikQuelleWaehlen(e){
+  musikstueckequelle = e.srcElement.textContent;
+  alert(musikstueckequelle);
+  musikSammlungErstellen();
+  switch (musikstueckequelle){
+    case "Karneval":
+    karneval.style.color = "red";
+    umusik.style.color = "lightslategray";
+    marschheft.style.color = "lightslategray";
+    break;
+
+    case "U-Musik":
+    karneval.style.color = "lightslategray";
+    umusik.style.color = "red";
+    marschheft.style.color = "lightslategray";
+    break;
+
+    case "Marschheft":
+    karneval.style.color = "lightslategray";
+    umusik.style.color = "lightslategray";
+    marschheft.style.color = "red";
+    break;
+  }
+}
+
 async function getText(file) {
   let myText = "";
   let myObject = await fetch(file);
@@ -267,7 +305,7 @@ async function getText(file) {
 
 async function musikSammlungErstellen() {
   let _musikSammlung = [];
-  let _musikStueckeQuellText = await getText("musikstueckequelle.csv");
+  let _musikStueckeQuellText = await getText(musikstueckequelle);
   let _musikStueckeArray = _musikStueckeQuellText.split("\n");
   for (msText of _musikStueckeArray) {
     let msArray = msText.split(";");
@@ -360,6 +398,7 @@ function endInput(e) {
   msFilterTitel = musikSammlung;
   
   if (msFilterNummer.length === 0) {
+    console.log(musikSammlung);
     msFilterTitel = musikSammlung.filter((m) => m.titel.toUpperCase().includes(inputText.textContent));
     buttonSpace.textContent = "..." + inputText.textContent + "...";
     buttonSpace.style.display = "flex";
@@ -477,6 +516,13 @@ function displayText() {
         outputTitel.style.color = "white";
         containerTonart.style.backgroundColor = "blue";
         outputTonart.style.backgroundColor = "blue";
+        outputTonart.style.color = "white";
+      } else if (String(m.mappe).startsWith("rot")) {
+        containerTitel.style.backgroundColor = "red";
+        outputTitel.style.backgroundColor = "red";
+        outputTitel.style.color = "white";
+        containerTonart.style.backgroundColor = "red";
+        outputTonart.style.backgroundColor = "red";
         outputTonart.style.color = "white";
       }
 
