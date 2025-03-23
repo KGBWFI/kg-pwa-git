@@ -151,7 +151,6 @@ function speicherPush() {
   }
 }
 
-
 function speicherShow() {
   if (inputText.style.backgroundColor != "orange") {
     speicherIndex = speicher.length;
@@ -250,7 +249,7 @@ function updateInput(e) {
     const strShorter = str.slice(0, str.length - 1);
     inputText.textContent = strShorter;
     if (inputText.textContent === "") {
-      buttonReturn.style.backgroundColor = "rgb(96, 150, 244)";
+      buttonReturn.style.backgroundColor = "darkgrey";
     }
   } else {
     inputText.textContent = inputText.textContent + t;
@@ -258,15 +257,28 @@ function updateInput(e) {
 }
 
 function automatikEinaus(e) {
-  if (autoCheck.style.backgroundColor === "red") {
-    autoCheck.style.backgroundColor = "green";
+  if (autoCheck.style.backgroundColor === "lightgray") {
+    autoCheck.style.backgroundColor = "red";
     autoCheck.textContent = "Automatik ist an";
     autoCheck.style.fontWeight = "normal";
+    switch(musikstueckequelle){
+      case "Karneval":
+        karneval.style.color = "red";
+        break;
+      case "U-Musik":
+        umusik.style.color = "red";
+        break;
+      case "Marschheft":
+        marschheft.style.color = "red";
+    }
     musikSammlung = msGeladen;
   } else {
-    autoCheck.style.backgroundColor = "red";
+    autoCheck.style.backgroundColor = "lightgray";
     autoCheck.textContent = "Freitext ohne Automatik";
     autoCheck.style.fontWeight = "normal";
+    karneval.style.color = "gray";
+    umusik.style.color = "gray";
+    marschheft.style.color = "gray";
     musikSammlung = [];
   }
 };
@@ -278,22 +290,24 @@ function musikQuelleWaehlen(e){
   switch (musikstueckequelle){
     case "Karneval":
     karneval.style.color = "red";
-    umusik.style.color = "lightslategray";
-    marschheft.style.color = "lightslategray";
+    umusik.style.color = "gray";
+    marschheft.style.color = "gray";
     break;
 
     case "U-Musik":
-    karneval.style.color = "lightslategray";
+    karneval.style.color = "gray";
     umusik.style.color = "red";
-    marschheft.style.color = "lightslategray";
+    marschheft.style.color = "gray";
     break;
 
     case "Marschheft":
-    karneval.style.color = "lightslategray";
-    umusik.style.color = "lightslategray";
+    karneval.style.color = "gray";
+    umusik.style.color = "gray";
     marschheft.style.color = "red";
     break;
   }
+  autoCheck.style.backgroundColor = "lightgray";
+  automatikEinaus();
 }
 
 async function getText(file) {
@@ -591,7 +605,7 @@ function startInput() {
   outputText.hidden = true;
   outputTitel.hidden = true;
   outputTonart.hidden = true;
-  containerEingabe.hidden = false;
+  // containerEingabe.hidden = false;
   // inputText.hidden = false;
 
   // buttonLinks.style.backgroundColor = "white";
@@ -828,7 +842,7 @@ function eingabeShow() {
   buttonZurück.hidden = false;
   leerzeile.hidden = false;
   buttonReturn.hidden = false;
-  buttonReturn.style.backgroundColor = "dodgerblue";
+  buttonReturn.style.backgroundColor = "darkgrey";
   buttonZurück.style.backgroundColor = "lightgray";
 }
 

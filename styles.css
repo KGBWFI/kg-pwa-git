@@ -244,7 +244,7 @@ body, html {
 
 .AutomatikButton {
     color: white;
-    background-color: green;
+    background-color: red;
     width: 100%;
     height: 100%;
     font-size: xx-large;
@@ -271,9 +271,13 @@ body, html {
     align-items: center;
     text-align: center;
     background-color: lightgray;
-    color: lightslategray;
+    color: gray;
     font-size: x-large;
     border-style:double ;
+}
+
+.Karneval {
+    color: red;
 }
 
 .tastatur {
