@@ -277,7 +277,8 @@ body, html {
     background-color: lightgray;
     color: gray;
     font-size: x-large;
-    border-style:double ;
+    border-style:groove;
+    border-width: 0.3ch;
 }
 
 .Karneval {
