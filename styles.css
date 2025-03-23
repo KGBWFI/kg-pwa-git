@@ -106,6 +106,10 @@ body, html {
     background-color: white;
 }
 
+.outputText {
+    background-color: transparent;
+}
+
 .containerEingabe {
     display:flexbox;
     flex-direction: column;

@@ -57,6 +57,7 @@ let msFilterNummer = [MusikStueck];
 let msFilterTitel = [MusikStueck];
 let msGeladen = [MusikStueck];
 let musikstueckequelle = "Karneval";
+let automatik = "an";
 
 // inputText.addEventListener("keydown", endInput);
 
@@ -258,6 +259,7 @@ function updateInput(e) {
 
 function automatikEinaus(e) {
   if (autoCheck.style.backgroundColor === "lightgray") {
+    automatik = "an";
     autoCheck.style.backgroundColor = "red";
     autoCheck.textContent = "Automatik ist an";
     autoCheck.style.fontWeight = "normal";
@@ -273,6 +275,7 @@ function automatikEinaus(e) {
     }
     musikSammlung = msGeladen;
   } else {
+    automatik = "aus";
     autoCheck.style.backgroundColor = "lightgray";
     autoCheck.textContent = "Freitext ohne Automatik";
     autoCheck.style.fontWeight = "normal";
@@ -575,8 +578,10 @@ function displayText() {
   }
 
   if (inputText.textContent !== "KUNO") {
-    outputText.textContent = inputText.textContent;
     let fontGroesse = 1;
+    if (musikstueckequelle === "Marschheft" && automatik === "an" && msFilterTitel.length > 0) {
+      inputText.textContent = "MH " + inputText.textContent;
+    }
     do {
       fontGroesse = fontGroesse + 1;
       outputText.style.fontSize = `${fontGroesse}px`;
@@ -620,14 +625,14 @@ function startInput() {
 
   inputText.textContent = "";
 
-  containerOben.style.backgroundColor = "white";
-  containerTitel.style.backgroundColor = "white";
-  containerTonart.style.backgroundColor = "white";
-  containerUnten.style.backgroundColor = "white";
-  outputTitel.style.backgroundColor = "white";
-  outputTonart.style.backgroundColor = "white";
-  outputText.style.backgroundColor = "rgba(1, 1, 1, 0.001)";
-  containerUnten.style.backgroundColor = "white";
+  // containerOben.style.backgroundColor = "white";
+  // containerTitel.style.backgroundColor = "white";
+  // containerTonart.style.backgroundColor = "white";
+  // containerUnten.style.backgroundColor = "white";
+  // outputTitel.style.backgroundColor = "white";
+  // outputTonart.style.backgroundColor = "white";
+  // outputText.style.backgroundColor = "rgba(1, 1, 1, 0.001)";
+  // containerUnten.style.backgroundColor = "white";
 
   outputTitel.style.color = "black";
   outputTonart.style.color = "black";
