@@ -286,31 +286,33 @@ function automatikEinaus(e) {
   }
 };
 
-function musikQuelleWaehlen(e){
-  musikstueckequelle = e.srcElement.textContent;
-  alert(musikstueckequelle);
-  musikSammlungErstellen();
-  switch (musikstueckequelle){
-    case "Karneval":
-    karneval.style.color = "red";
-    umusik.style.color = "gray";
-    marschheft.style.color = "gray";
-    break;
+function musikQuelleWaehlen(e) {
+  if (confirm(`zu ${e.srcElement.textContent.toUpperCase()} wechseln?`)) {
+    musikstueckequelle = e.srcElement.textContent;
+    musikSammlungErstellen();
+    switch (musikstueckequelle) {
+      case "Karneval":
+        karneval.style.color = "red";
+        umusik.style.color = "gray";
+        marschheft.style.color = "gray";
+        break;
 
-    case "U-Musik":
-    karneval.style.color = "gray";
-    umusik.style.color = "red";
-    marschheft.style.color = "gray";
-    break;
+      case "U-Musik":
+        karneval.style.color = "gray";
+        umusik.style.color = "red";
+        marschheft.style.color = "gray";
+        break;
 
-    case "Marschheft":
-    karneval.style.color = "gray";
-    umusik.style.color = "gray";
-    marschheft.style.color = "red";
-    break;
+      case "Marschheft":
+        karneval.style.color = "gray";
+        umusik.style.color = "gray";
+        marschheft.style.color = "red";
+        break;
+    }
+    autoCheck.style.backgroundColor = "lightgray";
+    automatikEinaus();
   }
-  autoCheck.style.backgroundColor = "lightgray";
-  automatikEinaus();
+  return;
 }
 
 async function getText(file) {
