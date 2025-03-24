@@ -581,9 +581,9 @@ function displayText() {
 
   if (inputText.textContent !== "KUNO") {
     let fontGroesse = 1;
-    if (musikstueckequelle === "Marschheft" && automatik === "an" && msFilterTitel.length > 0) {
-      inputText.textContent = "MH " + inputText.textContent;
-    }
+    // if (musikstueckequelle === "Marschheft" && automatik === "an" && msFilterTitel.length > 0) {
+    //   inputText.textContent = "MH " + inputText.textContent;
+    // }
     do {
       fontGroesse = fontGroesse + 1;
       outputText.style.fontSize = `${fontGroesse}px`;
