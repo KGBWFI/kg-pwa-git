@@ -291,7 +291,7 @@ function automatikEinaus(e) {
 };
 
 function musikQuelleWaehlen(e) {
-  if (confirm(`${e.srcElement.textContent.toUpperCase()}?`)) {
+  if (confirm(`Wechseln zu ${e.srcElement.textContent.toUpperCase()} ?`)) {
     msQuelle = e.srcElement.textContent;
     musikSammlungErstellen();
     switch (msQuelle) {
