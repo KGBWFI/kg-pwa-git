@@ -56,17 +56,21 @@ let musikSammlung = [MusikStueck];
 let msFilterNummer = [MusikStueck];
 let msFilterTitel = [MusikStueck];
 let msGeladen = [MusikStueck];
-let musikstueckequelle = "Karneval";
+let msQuelle = "Karneval";
 let automatik = "an";
 
 // inputText.addEventListener("keydown", endInput);
 
 for (b of buttonABC) {
-  b.addEventListener("onclick", updateInput);
+  // b.addEventListener("onclick", updateInput);
+  b.addEventListener("touchstart", updateInput);
+
   b.addEventListener("mousedown", updateInput);
 }
 for (b of buttonZahl) {
-  b.addEventListener("onclick", updateInput);
+  // b.addEventListener("onclick", updateInput);
+  b.addEventListener("touchstart", updateInput);
+  
   b.addEventListener("mousedown", updateInput);
 }
 
@@ -263,7 +267,7 @@ function automatikEinaus(e) {
     autoCheck.style.backgroundColor = "red";
     autoCheck.textContent = "Automatik ist an";
     autoCheck.style.fontWeight = "normal";
-    switch(musikstueckequelle){
+    switch(msQuelle){
       case "Karneval":
         karneval.style.color = "red";
         break;
@@ -288,9 +292,9 @@ function automatikEinaus(e) {
 
 function musikQuelleWaehlen(e) {
   if (confirm(`zu ${e.srcElement.textContent.toUpperCase()} wechseln?`)) {
-    musikstueckequelle = e.srcElement.textContent;
+    msQuelle = e.srcElement.textContent;
     musikSammlungErstellen();
-    switch (musikstueckequelle) {
+    switch (msQuelle) {
       case "Karneval":
         karneval.style.color = "red";
         umusik.style.color = "gray";
@@ -324,7 +328,7 @@ async function getText(file) {
 
 async function musikSammlungErstellen() {
   let _musikSammlung = [];
-  let _musikStueckeQuellText = await getText(musikstueckequelle);
+  let _musikStueckeQuellText = await getText(msQuelle);
   let _musikStueckeArray = _musikStueckeQuellText.split("\n");
   for (msText of _musikStueckeArray) {
     let msArray = msText.split(";");
