@@ -287,7 +287,7 @@ function automatikEinaus(e) {
     umusik.style.color = "gray";
     marschheft.style.color = "gray";
     musikSammlung = [];
-  }
+  };
 };
 
 function musikQuelleWaehlen(e) {
@@ -315,16 +315,16 @@ function musikQuelleWaehlen(e) {
     }
     autoCheck.style.backgroundColor = "lightgray";
     automatikEinaus();
-  }
+  };
   return;
-}
+};
 
 async function getText(file) {
   let myText = "";
   let myObject = await fetch(file);
   myText = await myObject.text();
   return myText;
-}
+};
 
 async function musikSammlungErstellen() {
   let _musikSammlung = [];
@@ -340,11 +340,11 @@ async function musikSammlungErstellen() {
       msArray[4]
     );
     _musikSammlung.push(_musikStueck);
-  }
+  };
   msGeladen = _musikSammlung;
   musikSammlung = _musikSammlung;
   msFilterTitel = _musikSammlung;
-}
+};
 
 buttonPrinz.addEventListener("touchend", displayPrinz);
 buttonPrinz.addEventListener("mousedown", displayPrinz);
