@@ -63,13 +63,13 @@ let automatik = "an";
 
 for (b of buttonABC) {
   // b.addEventListener("onclick", updateInput);
-  b.addEventListener("touchstart", updateInput);
+  b.addEventListener("click", updateInput);
 
   b.addEventListener("mousedown", updateInput);
 }
 for (b of buttonZahl) {
   // b.addEventListener("onclick", updateInput);
-  b.addEventListener("touchstart", updateInput);
+  b.addEventListener("click", updateInput);
   
   b.addEventListener("mousedown", updateInput);
 }
