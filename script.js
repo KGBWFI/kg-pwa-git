@@ -254,7 +254,9 @@ function updateInput(e) {
   } else {
     inputText.textContent = inputText.textContent + t;
     clearTimeout(timeoutID);
-    timeoutID = setTimeout(endInput, 10000);
+    if (inputText.textContent != "") {
+      timeoutID = setTimeout(endInput, 10000);
+    }
   }
 }
 
