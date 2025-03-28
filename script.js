@@ -58,19 +58,14 @@ let msFilterTitel = [MusikStueck];
 let msGeladen = [MusikStueck];
 let msQuelle = "Karneval";
 let automatik = "an";
-
-// inputText.addEventListener("keydown", endInput);
+let timeoutID = 0;
 
 for (b of buttonABC) {
-  // b.addEventListener("onclick", updateInput);
   b.addEventListener("onclick", updateInput);
-
   b.addEventListener("mousedown", updateInput);
 }
 for (b of buttonZahl) {
-  // b.addEventListener("onclick", updateInput);
   b.addEventListener("onclick", updateInput);
-  
   b.addEventListener("mousedown", updateInput);
 }
 
@@ -244,6 +239,10 @@ function updateInput(e) {
     if (inputText.style.backgroundColor === "orange") {
       speicher[speicherIndex - 1] = inputText.textContent;
     }
+    if (timeoutID != 0) {
+      clearTimeout(timeoutID);
+      timeoutID = 0;
+    };
     endInput();
   } else if (t === "⌫" && t != "") {
     // if (buttonZurück.style.backgroundColor === "orange"){
@@ -258,6 +257,7 @@ function updateInput(e) {
     }
   } else {
     inputText.textContent = inputText.textContent + t;
+    timeoutID = setTimeout(endInput, 10000);
   }
 }
 
