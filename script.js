@@ -245,10 +245,6 @@ function updateInput(e) {
     };
     endInput();
   } else if (t === "⌫" && t != "") {
-    // if (buttonZurück.style.backgroundColor === "orange"){
-    //   inputText.textContent = "";
-    //   buttonZurück.style.backgroundColor = "lightgray";
-    // }
     const str = String(inputText.textContent);
     const strShorter = str.slice(0, str.length - 1);
     inputText.textContent = strShorter;
@@ -257,6 +253,7 @@ function updateInput(e) {
     }
   } else {
     inputText.textContent = inputText.textContent + t;
+    clearTimeout(timeoutID);
     timeoutID = setTimeout(endInput, 10000);
   }
 }
@@ -783,6 +780,9 @@ function nachLinks() {
 }
 
 function eingabeHide() {
+  containerEingabe.style.display = "none";
+  
+  /*
   containerEingabe.hidden = true;
   inputText.hidden = true;
   containerFavoriten.hidden = true;
@@ -804,9 +804,11 @@ function eingabeHide() {
   buttonZurück.hidden = true;
   leerzeile.hidden = true;
   buttonReturn.hidden = true;
+  */
 }
 
 function eingabeShow() {
+  containerEingabe.style.display = "flex";
   containerEingabe.hidden = false;
   inputText.hidden = false;
   // inputText.style.backgroundColor = "rgb(96, 150, 244)";
