@@ -253,25 +253,26 @@ function updateInput(e) {
     };
     clearTimeout(timeoutID);
     if (inputText.textContent != "") {
-      timeoutID = setTimeout(() => {
-        endInput();
-        if (inputText.style.backgroundColor != "orange") {
-          speicherPush();
-        };
-        speicherPush();
-      },
+      timeoutID = setTimeout(
+        () => {
+          if (inputText.style.backgroundColor != "orange") {
+            speicherPush();
+          };
+          endInput();
+        },
         5000);
     };
   } else {
     inputText.textContent = inputText.textContent + t;
     clearTimeout(timeoutID);
     if (inputText.textContent != "") {
-      timeoutID = setTimeout(() => {
-        endInput();
-        if (inputText.style.backgroundColor != "orange") {
-          speicherPush();
-        };
-      },
+      timeoutID = setTimeout(
+        () => {
+          if (inputText.style.backgroundColor != "orange") {
+            speicherPush();
+          };
+          endInput();
+        },
         5000);
     };
   };
