@@ -250,15 +250,32 @@ function updateInput(e) {
     inputText.textContent = strShorter;
     if (inputText.textContent === "") {
       buttonReturn.style.backgroundColor = "darkgrey";
-    }
+    };
+    clearTimeout(timeoutID);
+    if (inputText.textContent != "") {
+      timeoutID = setTimeout(() => {
+        endInput();
+        if (inputText.style.backgroundColor != "orange") {
+          speicherPush();
+        };
+        speicherPush();
+      },
+        5000);
+    };
   } else {
     inputText.textContent = inputText.textContent + t;
     clearTimeout(timeoutID);
     if (inputText.textContent != "") {
-      timeoutID = setTimeout(endInput, 10000);
-    }
-  }
-}
+      timeoutID = setTimeout(() => {
+        endInput();
+        if (inputText.style.backgroundColor != "orange") {
+          speicherPush();
+        };
+      },
+        5000);
+    };
+  };
+};
 
 function automatikEinaus(e) {
   if (autoCheck.style.backgroundColor === "lightgray") {
