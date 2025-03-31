@@ -12,7 +12,9 @@ self.addEventListener("install", (e) => {
         "./styles.css",
         "./manifest.json",
         "./script.js",
-        "./musikstueckequelle.csv",
+        "./Karneval",
+        "./U-Musik",
+        "./Marschheft",
         "./Ritter_Kuno.jpeg",
       ]);
     })
