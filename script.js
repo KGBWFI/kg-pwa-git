@@ -457,20 +457,16 @@ function endInput(e) {
   if (msFilterTitel.length > 1 && msFilterTitel !== musikSammlung) {
     buttonRechts.style.backgroundColor = "green";
     buttonRechts.textContent = "▶️";
-    // buttonRechts.style.display = "flex";
     buttonSpace.style.display = "flex";
     buttonLinks.style.backgroundColor = "green";
-    // buttonLinks.style.display = "none";
     buttonLinks.textContent = "";
     buttonLinks.style.background = "transparent";
   } else if (speicher.length > 1) {
     buttonRechts.style.backgroundColor = "orange";
     if (speicherIndex === speicher.length) {
-      // buttonRechts.style.display = "none";
       buttonRechts.textContent = "";
       buttonRechts.style.background = "transparent"
     } else {
-      // buttonRechts.style.display = "flex";
       buttonRechts.textContent = "▶️";
       buttonRechts.style.backgroundColor = "orange";
     }
@@ -478,21 +474,17 @@ function endInput(e) {
     buttonSpace.textContent = `Verlauf ${speicherIndex}/${speicher.length}`;
     buttonLinks.style.backgroundColor = "orange";
     if (speicherIndex === 1) {
-      // buttonLinks.style.display = "none";
       buttonLinks.textContent = "";
       buttonLinks.style.backgroundColor = "transparent";
     } else {
-      // buttonLinks.style.display = "flex";
       buttonLinks.textContent = "◀️";
       buttonLinks.style.backgroundColor = "orange";
     }
   } else {
-    // buttonRechts.style.display = "none";
     buttonRechts.textContent = "";
     buttonRechts.style.background = "transparent"
     buttonSpace.textContent = "";
     buttonSpace.style.display = "flex";
-    // buttonLinks.style.display = "none";
     buttonLinks.textContent = "";
     buttonLinks.style.background = "transparent"
   }
@@ -507,7 +499,6 @@ function displayText() {
     ritterKuno.hidden = false;
     containerGesamt.hidden = true;
     containerUnten.hidden = true;
-    // containerButtons.display = "none";
     return;
   }
 
@@ -629,11 +620,6 @@ function startInput() {
   outputText.hidden = true;
   outputTitel.hidden = true;
   outputTonart.hidden = true;
-  // containerEingabe.hidden = false;
-  // inputText.hidden = false;
-
-  // buttonLinks.style.backgroundColor = "white";
-  // buttonRechts.style.backgroundColor = "white";
 
   outputText.textContent = "";
   outputTitel.textContent = "";
@@ -643,15 +629,6 @@ function startInput() {
   buttonSpace.style.display = "none";
 
   inputText.textContent = "";
-
-  // containerOben.style.backgroundColor = "white";
-  // containerTitel.style.backgroundColor = "white";
-  // containerTonart.style.backgroundColor = "white";
-  // containerUnten.style.backgroundColor = "white";
-  // outputTitel.style.backgroundColor = "white";
-  // outputTonart.style.backgroundColor = "white";
-  // outputText.style.backgroundColor = "rgba(1, 1, 1, 0.001)";
-  // containerUnten.style.backgroundColor = "white";
 
   outputTitel.style.color = "black";
   outputTonart.style.color = "black";
@@ -715,12 +692,10 @@ function nachRechts() {
           inputText.textContent = msFilterTitel[index + 1].titel.toUpperCase();
         }
         if (index + 1 === msFilterTitel.length - 1) {
-          // buttonRechts.style.display = "none";
           buttonRechts.textContent = "";
           buttonRechts.style.backgroundColor = "transparent";
         }
         if (index + 1 > 0) {
-          // buttonLinks.style.display = "flex";
           buttonLinks.textContent = "◀️";
           buttonLinks.style.backgroundColor = "green";
         }
@@ -738,12 +713,10 @@ function nachLinks() {
       inputText.textContent = speicher[speicherIndex - 1];
       buttonSpace.textContent = `Verlauf ${speicherIndex}/${speicher.length}`;
       if (speicherIndex === 1) {
-        // buttonLinks.style.display = "none";
         buttonLinks.textContent = "";
         buttonLinks.style.backgroundColor = "transparent";
       };
       if (speicherIndex < speicher.length) {
-        // buttonRechts.style.display = "flex";
         buttonRechts.textContent = "▶️";
         buttonRechts.style.backgroundColor = "orange";
       }
@@ -783,12 +756,10 @@ function nachLinks() {
           inputText.textContent = msFilterTitel[index - 1].titel.toUpperCase();
         }
         if (index - 1 < msFilterTitel.length - 1) {
-          // buttonRechts.style.display = "flex";
           buttonRechts.textContent = "▶️";
           buttonRechts.style.backgroundColor = "green";
         }
         if (index - 1 === 0) {
-          // buttonLinks.style.display = "none";
           buttonLinks.textContent = "";
           buttonLinks.style.backgroundColor = "transparent";
         }
@@ -801,46 +772,18 @@ function nachLinks() {
 
 function eingabeHide() {
   containerEingabe.style.display = "none";
-  
-  /*
-  containerEingabe.hidden = true;
-  inputText.hidden = true;
-  containerFavoriten.hidden = true;
-  // buttonEinfachTusch.hidden = true;
-  // buttonDreifachTusch.hidden = true;
-  buttonPrinz.hidden = true;
-  buttonBauer.hidden = true;
-  buttonJungfrau.hidden = true;
-  buttonProsit.hidden = true;
-  buttonHappyBirthday.hidden = true;
-  autoCheck.hidden = true;
-  for (b of buttonABC) {
-    b.hidden = true;
-  }
-  for (b of buttonZahl) {
-    b.hidden = true;
-  }
-  buttonLeer.hidden = true;
-  buttonZurück.hidden = true;
-  leerzeile.hidden = true;
-  buttonReturn.hidden = true;
-  */
 }
 
 function eingabeShow() {
   containerEingabe.style.display = "flex";
   containerEingabe.hidden = false;
   inputText.hidden = false;
-  // inputText.style.backgroundColor = "rgb(96, 150, 244)";
   if (inputText.style.backgroundColor != "orange") {
     speicherIndex = speicher.length;
     speicherZähler.textContent = speicher.length === 0 ? "Verlauf ist leer" : speicherZähler.hidden = true;
     speicherLetzteAnzeige.style.display = speicher.length === 0 ? "none" : "flex";
   }
   containerFavoriten.style.display = "none";
-  // containerFavoriten.hidden = false;
-  // buttonEinfachTusch.hidden = false;
-  // buttonDreifachTusch.hidden = false;
   buttonPrinz.hidden = false;
   buttonBauer.hidden = false;
   buttonJungfrau.hidden = false;
